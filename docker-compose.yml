@@ -1,11 +1,11 @@
-version: '3'
+version: '3.8'
 services:
   #PHP Service
   wedding_app:
     build:
       args:
         user: wedding_app-api-user
-        uid: 1000
+        uid: 33:33
       context: .
       dockerfile: Dockerfile
     container_name: wedding_app_container
