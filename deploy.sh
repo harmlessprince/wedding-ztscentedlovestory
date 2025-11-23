@@ -7,24 +7,26 @@ APP_CONTAINER="wedding_app_container"
 echo "Starting deployment..."
 
 # 1. Pull latest changes from Git
-echo "Pulling latest changes from Git..."
-git pull origin main  # change branch if needed
+git pull origin main
 
 # 2. Rebuild and start Docker containers
-echo "Rebuilding and starting Docker Compose containers..."
 docker compose down
 docker compose up -d --build
 
-# Wait a few seconds for the container to be fully up
-sleep 10
+# Wait a few seconds for container to be fully up
+sleep 5
 
-# 3. Install PHP dependencies inside the container
-echo "Installing PHP dependencies inside container..."
-docker exec -i $APP_CONTAINER composer install --no-interaction --optimize-autoloader
+# 3. Fix Git safe directory and ownership
+docker exec -i $APP_CONTAINER bash -c "
+    git config --global --add safe.directory /var/www
+    chown -R www:www /var/www
+"
 
-# 4. Install Node.js dependencies inside the container
-echo "Installing Node.js dependencies inside container..."
-docker exec -i $APP_CONTAINER npm install
-docker exec -i $APP_CONTAINER npm run build
+# 4. Install PHP dependencies
+docker exec -i $APP_CONTAINER bash -c "cd /var/www && composer install --no-interaction --optimize-autoloader"
+
+# 5. Install Node.js dependencies
+docker exec -i $APP_CONTAINER bash -c "cd /var/www && npm install"
+docker exec -i $APP_CONTAINER bash -c "cd /var/www && npm run build"
 
 echo "Deployment completed successfully!"
