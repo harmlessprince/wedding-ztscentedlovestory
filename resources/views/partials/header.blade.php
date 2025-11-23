@@ -1,5 +1,9 @@
-<header class="fixed top-4 left-1 right-1 bg-maroon rounded-full px-6 py-1 flex items-center justify-between z-50 max-w-sm mx-auto">
-    <img src="{{asset('/img/solar_heart-bold-duotone.svg')}}" alt="">
+<header
+    class="fixed top-4 left-1 right-1 bg-maroon rounded-full px-6 py-1 flex items-center justify-between z-50 max-w-sm max-w-[39.8px] mx-auto">
+    <a href="{{route('home')}}">
+        <img src="{{asset('/img/solar_heart-bold-duotone.svg')}}" alt="">
+    </a>
+
 
     <div class="flex items-center gap-3">
         <a href="{{route('rsvp')}}" class="bg-white text-maroon px-8 py-1 rounded-full font-semibold">

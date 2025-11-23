@@ -7,8 +7,7 @@
 <div class="max-w-md mx-auto bg-rose-light min-h-screen px-4">
 
     @include('partials.header')
-    <main id="successSection" class="pt-32 pb-12 hidden">
-
+    <main id="successSection" class="pt-32 pb-12">
 
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div class="confetti-piece" style="left: 5%; animation-delay: 0s;"></div>
@@ -42,7 +41,7 @@
 
             <h1 class="text-black text-4xl font-bold text-center mb-4 relative z-10 font-sans">Successful</h1>
             <p class="text-[#656565] text-center mb-12 px-6 relative z-10">
-                Thank you your invitation card has been sent to your mail
+                Thank you, your invitation card has been sent to your mail
             </p>
 
             <div class="bg-[#E5D9D9] rounded-2xl p-8 text-center mb-8 w-full max-w-sm relative z-10 shadow-lg flex flex-col items-center">

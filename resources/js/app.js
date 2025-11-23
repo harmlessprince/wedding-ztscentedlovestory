@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const successSection = document.getElementById('successSection');
     const groomGuestBtn = document.getElementById('groomGuestBtn');
     const brideGuestBtn = document.getElementById('brideGuestBtn');
-    const guestTypeInput = document.getElementById('guestType');
+    const guestTypeInput = document.getElementById('side');
 
     if (groomGuestBtn && brideGuestBtn && guestTypeInput) {
         groomGuestBtn.addEventListener('click', () => {
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             groomGuestBtn.classList.add('border-2', 'border-maroon', 'bg-[#C9B0B0]', 'text-gray-700');
             brideGuestBtn.classList.remove('border-2', 'border-maroon', 'bg-[#C9B0B0]', 'text-gray-700');
             brideGuestBtn.classList.add('bg-[#E5D9D9]', 'text-gray-500');
-            guestTypeInput.value = 'groom';
+            guestTypeInput.value = 'GROOM';
         });
 
         brideGuestBtn.addEventListener('click', () => {
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             brideGuestBtn.classList.add('border-2', 'border-maroon', 'bg-[#C9B0B0]', 'text-gray-700');
             groomGuestBtn.classList.remove('border-2', 'border-maroon', 'bg-[#C9B0B0]', 'text-gray-700');
             groomGuestBtn.classList.add('bg-[#E5D9D9]', 'text-gray-500');
-            guestTypeInput.value = 'bride';
+            guestTypeInput.value = 'BRIDE';
         });
     }
 

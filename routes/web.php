@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\ValidateRsvpHash;
+use App\Models\Rsvp;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -38,21 +39,19 @@ Route::get('/order-of-event', function () {
 
 
 Route::post('/contact', function (Request $request) {
+
     $validated = $request->validate([
         'surname' => 'required|string',
         'first_name' => 'required|string',
         'email' => 'required|email',
         'phone' => 'required|string',
-        'type' => 'required|string',
         'message' => 'required|string',
-        'side' => 'required|string|in:Groom,Bride',
+        'side' => 'required|string|in:GROOM,BRIDE',
     ]);
 
     // Generate hash from surname, first name, email, phone
     $hashSource = $validated['surname'] . $validated['first_name'] . $validated['email'] . $validated['phone'];
     $hash = hash('sha256', $hashSource);
-
-    dd($hash);
 
     // Check if record exists
     $rsvp = Rsvp::where('hash', $hash)->first();

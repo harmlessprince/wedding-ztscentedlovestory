@@ -25,11 +25,11 @@
             </div>
 
             <div>
-                <label for="firstname" class="text-black text-sm font-medium block mb-2">First name</label>
+                <label for="first_name" class="text-black text-sm font-medium block mb-2">First name</label>
                 <input
                     type="text"
-                    id="firstname"
-                    name="firstname"
+                    id="first_name"
+                    name="first_name"
                     placeholder="Enter your first name"
                     required
                     class="w-full px-4 py-3 rounded-lg bg-[#E5D9D9] border-none outline-none focus:ring-2 focus:ring-maroon placeholder-gray-400"
@@ -80,7 +80,7 @@
                         Bride
                     </button>
                 </div>
-                <input type="hidden" id="guestType" name="guestType" value="groom">
+                <input type="hidden" id="side" name="side" value="GRROM">
             </div>
 
 
