@@ -1,5 +1,8 @@
 FROM php:8.2-fpm
 
+ARG user
+ARG uid
+
 # Copy composer.lock and composer.json
 COPY composer.lock composer.json /var/www/
 
@@ -34,10 +37,10 @@ RUN echo "NPM: " && npm -v
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Add user for the Laravel application
-RUN #useradd -u 33 -ms /bin/bash -g 33 www
+RUN useradd -u $uid -ms /bin/bash -g www-data $user
 
 # Copy existing application directory permissions
-COPY --chown=www-data:www-data . /var/www
+COPY --chown=$user:www-data . /var/www
 
 # Change current user to www
 USER www-data
