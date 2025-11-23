@@ -1,31 +1,29 @@
 #!/bin/bash
-
-# Exit immediately if a command exits with a non-zero status
 set -e
-
-# Optional: print each command before executing
 set -x
+
+APP_CONTAINER="wedding_app_container"
 
 echo "Starting deployment..."
 
 # 1. Pull latest changes from Git
 echo "Pulling latest changes from Git..."
-git pull origin main  # change 'main' to your branch if needed
+git pull origin main  # change branch if needed
 
-# 2. Install PHP dependencies
-echo "Installing PHP dependencies..."
-composer install --no-interaction --optimize-autoloader
+# 2. Install PHP dependencies inside the container
+echo "Installing PHP dependencies inside container..."
+docker exec -it $APP_CONTAINER composer install --no-interaction --optimize-autoloader
 
-# 3. Install Node.js dependencies
-echo "Installing Node.js dependencies..."
-npm install
+# 3. Install Node.js dependencies inside the container
+echo "Installing Node.js dependencies inside container..."
+docker exec -it $APP_CONTAINER npm install
 
-# 3. Install Node.js dependencies
-echo "Installing Node.js dependencies..."
-npm run build
+# 3. Install Node.js dependencies inside the container
+echo "Installing Node.js dependencies inside container..."
+docker exec -it $APP_CONTAINER npm run build
 
-# 4. Restart Docker containers
-echo "Restarting Docker containers..."
+# 4. Restart Docker Compose containers
+echo "Restarting Docker Compose containers..."
 docker compose down
 docker compose up -d --build
 
