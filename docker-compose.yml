@@ -18,6 +18,7 @@ services:
     volumes:
       - ./:/var/www
       - ./docker-compose/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - node_modules:/var/www/node_modules
     networks:
       - wedding_app_network
 
@@ -68,6 +69,8 @@ services:
       - wedding_app_network
 volumes:
   wedding_mysql_data:
+    driver: local
+  node_modules:
     driver: local
 #  Docker Networks
 networks:
