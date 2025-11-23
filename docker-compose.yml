@@ -4,7 +4,7 @@ services:
   wedding_app:
     build:
       args:
-        user: wedding_app-api-user
+        user: ubuntu
         uid: 100033:100033
       context: .
       dockerfile: Dockerfile

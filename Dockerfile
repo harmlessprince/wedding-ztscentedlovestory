@@ -44,7 +44,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 COPY --chown=$user:www-data . /var/www
 
 # Change current user to www
-USER www-data
+USER $user
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
