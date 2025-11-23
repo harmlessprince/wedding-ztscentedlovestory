@@ -17,14 +17,14 @@
         <section class=" text-center mx-6 py-30  flex flex-col gap-3">
             <div>
                 <p class="text-gray-700 text-sm mb-2 ">The Families of (Mr. & Mrs.) Ismail Bello &</p>
-                <p class="text-gray-700 text-sm mb-6 ">(Mr. & Mrs.) Adewuyi Invite you to the</p>
+                <p class="text-gray-700 text-sm mb-6 ">(Mr. & Mrs.) Adewuyi Invites you to the</p>
             </div>
 
             <h1 class="text-4xl font-bold mb-4">Walimatul Nikkah</h1>
             <p class="text-2xl mb-3 font-bold">& Engagement Of</p>
 
             <div>
-                <img src="{{asset('img/long-staff.svg')}}" alt="">
+                <img src="{{asset('/img/long-staff.svg')}}" alt="">
             </div>
             <section class="flex flex-col justify-center items-center my-4">
 
@@ -32,7 +32,7 @@
                     Ololade</h2>
 
                 <div class="flex justify-center items-center">
-                    <img src="{{asset('img/ring.svg')}}" alt="Rings" class="w-16 h-16">
+                    <img src="{{asset('/img/ring.svg')}}" alt="Rings" class="w-16 h-16">
                 </div>
 
                 <h2 class="text-maroon text-3xl" style="font-family: 'Playwrite NZ Guides', cursive;">Taofeeq
@@ -40,11 +40,11 @@
             </section>
 
 
-            <img src="{{asset('img/huge-staff.svg')}}" alt="" class="mx-auto mb-6">
+            <img src="{{asset('/img/huge-staff.svg')}}" alt="" class="mx-auto mb-6">
 
             <p class="text-gray-700 text-sm italic mb-2">"And we created you in pairs"</p>
             <p class="text-gray-700 text-xs">Quran (78:8)</p>
-            <a href="/rsvp.html"
+            <a href="{{route('rsvp')}}"
                class="relative z-20 mx-auto bg-maroon text-white py-2 px-16 rounded-full font-semibold flex items-center justify-center gap-2 cursor-pointer">
                 <img src="{{asset('/img/ticket.svg')}}" alt="">
                 <span>R.S.V.P</span>
@@ -189,8 +189,8 @@
                     <div>
                         <p class="text-maroon text-sm mb-1">Account name</p>
                         <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                            <p class="text-maroon font-semibold">Adewuyi Quadri Adetunji</p>
-                            <button class="copy-btn text-maroon" data-copy="Adewuyi Quadri Adetunji">
+                            <p class="text-maroon font-semibold">Taofeeq Olamilekan Adewuyi</p>
+                            <button class="copy-btn text-maroon" data-copy="Taofeeq Olamilekan Adewuyi">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -202,8 +202,8 @@
                     <div>
                         <p class="text-maroon text-sm mb-1">Account number</p>
                         <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                            <p class="text-maroon font-semibold">6947037490038</p>
-                            <button class="copy-btn text-maroon" data-copy="6947037490038">
+                            <p class="text-maroon font-semibold">8131974410</p>
+                            <button class="copy-btn text-maroon" data-copy="8131974410">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -215,8 +215,8 @@
                     <div>
                         <p class="text-maroon text-sm mb-1">Bank name</p>
                         <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                            <p class="text-maroon font-semibold">Wema Bank</p>
-                            <button class="copy-btn text-maroon" data-copy="Wema Bank">
+                            <p class="text-maroon font-semibold">OPay Digital Services Limited(OPay)</p>
+                            <button class="copy-btn text-maroon" data-copy="OPay Digital Services Limited(OPay)">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -231,8 +231,8 @@
                     <div>
                         <p class="text-maroon text-sm mb-1">Account name</p>
                         <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                            <p class="text-maroon font-semibold">Bello Zuliat Ololade</p>
-                            <button class="copy-btn text-maroon" data-copy="Bello Zuliat Ololade">
+                            <p class="text-maroon font-semibold">Zuliat Ismail-Bello</p>
+                            <button class="copy-btn text-maroon" data-copy="Zuliat Ismail-Bello">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -244,8 +244,8 @@
                     <div>
                         <p class="text-maroon text-sm mb-1">Account number</p>
                         <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                            <p class="text-maroon font-semibold">1234567890</p>
-                            <button class="copy-btn text-maroon" data-copy="1234567890">
+                            <p class="text-maroon font-semibold">7466364817</p>
+                            <button class="copy-btn text-maroon" data-copy="7466364817">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -257,8 +257,8 @@
                     <div>
                         <p class="text-maroon text-sm mb-1">Bank name</p>
                         <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                            <p class="text-maroon font-semibold">GTBank</p>
-                            <button class="copy-btn text-maroon" data-copy="GTBank">
+                            <p class="text-maroon font-semibold">PocketApp</p>
+                            <button class="copy-btn text-maroon" data-copy="PocketApp">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
