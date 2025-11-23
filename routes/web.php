@@ -40,6 +40,7 @@ Route::get('/order-of-event', function () {
 
 Route::post('/contact', function (Request $request) {
 
+
     $validated = $request->validate([
         'surname' => 'required|string',
         'first_name' => 'required|string',
@@ -55,7 +56,7 @@ Route::post('/contact', function (Request $request) {
 
     // Check if record exists
     $rsvp = Rsvp::where('hash', $hash)->first();
-
+//    dd($rsvp);
     if ($rsvp) {
         // Record exists, send email
         Mail::to($validated['email'])->send(new ContactMail($rsvp->toArray()));

@@ -80,7 +80,7 @@
                         Bride
                     </button>
                 </div>
-                <input type="hidden" id="side" name="side" value="GRROM">
+                <input type="hidden" id="side" name="side" value="GROOM">
             </div>
 
 
