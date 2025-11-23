@@ -120,8 +120,7 @@
                 <hr class="mb-4 border-[#C9B0B0] border-t-2 w-full">
 
                 <p class="text-black text-sm px-4">
-                    From Mile 2 - Take a bus going to Oko afo - drop at success plaza - Magbon bus stop - cross to the
-                    side.
+                    From (Mile 2 or Iyanapaja) Take a bus going to Oko Afo, drop at success plaza, after Magbon bus stop then cross to the other side.
                 </p>
             </div>
         </div>
