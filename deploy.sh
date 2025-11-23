@@ -1,32 +1,32 @@
 #!/bin/bash
-set -e
-set -x
 
-APP_CONTAINER="wedding_app_container"
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Optional: print each command before executing
+set -x
 
 echo "Starting deployment..."
 
 # 1. Pull latest changes from Git
-git pull origin main
+echo "Pulling latest changes from Git..."
+git pull origin main  # change 'main' to your branch if needed
 
-# 2. Rebuild and start Docker containers
+# 2. Install PHP dependencies
+echo "Installing PHP dependencies..."
+composer install --no-interaction --optimize-autoloader
+
+# 3. Install Node.js dependencies
+echo "Installing Node.js dependencies..."
+npm install
+
+# 3. Install Node.js dependencies
+echo "Installing Node.js dependencies..."
+npm run build
+
+# 4. Restart Docker containers
+echo "Restarting Docker containers..."
 docker compose down
 docker compose up -d --build
-
-# Wait a few seconds for container to be fully up
-sleep 5
-
-# 3. Fix Git safe directory and ownership
-docker exec -i $APP_CONTAINER bash -c "
-    git config --global --add safe.directory /var/www
-    chown -R www:www /var/www
-"
-
-# 4. Install PHP dependencies
-docker exec -i $APP_CONTAINER bash -c "cd /var/www && composer install --no-interaction --optimize-autoloader"
-
-# 5. Install Node.js dependencies
-docker exec -i $APP_CONTAINER bash -c "cd /var/www && npm install"
-docker exec -i $APP_CONTAINER bash -c "cd /var/www && npm run build"
 
 echo "Deployment completed successfully!"
