@@ -48,7 +48,7 @@ RUN find /var/www -type f -exec chmod 644 {} \;
 RUN find /var/www -type d -exec chmod 755 {} \;
 RUN chgrp -R www-data storage bootstrap/cache
 RUN chmod -R ug+rwx storage bootstrap/cache
-RUN chmod a+x node_modules/.bin/vite
+RUN #chmod a+x node_modules/.bin/vite
 
 # Change current user to www
 USER $user
