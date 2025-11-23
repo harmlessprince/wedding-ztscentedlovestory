@@ -5,7 +5,8 @@ services:
     build:
       args:
         user: ubuntu
-        uid: 100033:100033
+        uid: 1001
+        gid: 1001
       context: .
       dockerfile: Dockerfile
     container_name: wedding_app_container
