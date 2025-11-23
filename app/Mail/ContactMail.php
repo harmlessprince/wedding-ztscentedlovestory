@@ -19,6 +19,7 @@ class ContactMail extends Mailable
     public function __construct($data)
     {
         $this->data = $data;
+        $this->subject = "You’re Officially Invited to Our ZTscentedlovestory 💛❤️"
     }
 
     /**
