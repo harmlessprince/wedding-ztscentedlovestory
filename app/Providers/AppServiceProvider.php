@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if($this->app->environment('production') || $this->app->environment('staging')) {
+            \URL::forceScheme('https');
+        }
+        Model::preventLazyLoading(!app()->isProduction());
+        Relation::enforceMorphMap([
+            'user' => User::class,
+        ]);
     }
 }
