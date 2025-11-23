@@ -37,6 +37,7 @@ RUN echo "NPM: " && npm -v
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Add user for the Laravel application
+RUN groupadd -g $uid $user
 RUN useradd -u $uid -ms /bin/bash -g www-data $user
 
 # Copy existing application directory permissions
