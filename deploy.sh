@@ -20,9 +20,13 @@ composer install --no-interaction --optimize-autoloader
 echo "Installing Node.js dependencies..."
 npm install
 
+# 3. Install Node.js dependencies
+echo "Installing Node.js dependencies..."
+npm run build
+
 # 4. Restart Docker containers
 echo "Restarting Docker containers..."
-sudo docker compose down
-sudo docker compose up -d --build
+docker compose down
+docker compose up -d --build
 
 echo "Deployment completed successfully!"
