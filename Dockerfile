@@ -44,6 +44,7 @@ RUN groupadd -g $uid $user \
 COPY --chown=$user:www-data . /var/www
 
 RUN chown -R $USER:www-data /var/www
+RUN chown -R $USER:www-data /var/www/node_modules
 RUN find /var/www -type f -exec chmod 644 {} \;
 RUN find /var/www -type d -exec chmod 755 {} \;
 RUN chgrp -R www-data storage bootstrap/cache
