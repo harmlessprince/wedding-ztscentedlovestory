@@ -34,13 +34,13 @@ RUN echo "NPM: " && npm -v
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Add user for the Laravel application
-RUN useradd -u 33 -ms /bin/bash -g 33 www
+RUN #useradd -u 33 -ms /bin/bash -g 33 www
 
 # Copy existing application directory permissions
-COPY --chown=www:www . /var/www
+COPY --chown=www-data:www-data . /var/www
 
 # Change current user to www
-USER www
+USER www-data
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
