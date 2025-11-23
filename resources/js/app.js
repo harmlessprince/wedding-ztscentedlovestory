@@ -133,29 +133,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (ticketForm && formSection && successSection) {
-        ticketForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const formData = {
-                surname: document.getElementById('surname').value,
-                firstname: document.getElementById('firstname').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                guestType: guestTypeInput.value,
-                message: document.getElementById('message').value
-            };
-
-            console.log('Ticket Submission:', formData);
-
-
-            formSection.classList.add('hidden');
-            successSection.classList.remove('hidden');
-
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
+    // if (ticketForm && formSection && successSection) {
+    //     ticketForm.addEventListener('submit', (e) => {
+    //         e.preventDefault();
+    //
+    //         const formData = {
+    //             surname: document.getElementById('surname').value,
+    //             firstname: document.getElementById('firstname').value,
+    //             phone: document.getElementById('phone').value,
+    //             email: document.getElementById('email').value,
+    //             guestType: guestTypeInput.value,
+    //             message: document.getElementById('message').value
+    //         };
+    //
+    //         console.log('Ticket Submission:', formData);
+    //
+    //
+    //         formSection.classList.add('hidden');
+    //         successSection.classList.remove('hidden');
+    //
+    //
+    //         window.scrollTo({ top: 0, behavior: 'smooth' });
+    //     });
+    // }
 
 
     const weddingDate = new Date('February 7, 2026 00:00:00').getTime();
