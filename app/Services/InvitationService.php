@@ -30,7 +30,7 @@ class InvitationService
             ->setNodeBinary('/usr/bin/node')
             ->setChromePath('/usr/bin/chromium')
             ->addChromiumArguments([
-                '--no-sandbox'
+                'no-sandbox'
             ])
             ->select('.email-container')
             ->windowSize(600, 500)
