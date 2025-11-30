@@ -72,6 +72,7 @@ RUN echo "Chromium: " && chromium --version || true
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+
 # Add user for the Laravel application
 RUN groupadd -g $uid $user \
     && useradd -u $uid -ms /bin/bash -g $user $user
@@ -93,6 +94,9 @@ RUN chown -R ${user}:www-data /var/www \
 RUN #chmod +x node_modules/@esbuild/linux-x64/bin/esbuild
 
 
+COPY ./entrypoint.sh /usr/local/bin/docker-laravel-entrypoint
+RUN chmod +x /usr/local/bin/docker-laravel-entrypoint
+
 # Puppeteer env: skip downloading Chromium (we use system chromium)
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium"
@@ -103,4 +107,5 @@ USER $user
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 
-CMD ["php-fpm"]
+ENTRYPOINT ["/usr/local/bin/docker-laravel-entrypoint"]
+

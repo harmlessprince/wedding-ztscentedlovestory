@@ -9,12 +9,17 @@ services:
         gid: 1001
       context: .
       dockerfile: Dockerfile
+    image: wedding_app_image
     restart: unless-stopped
     tty: true
     environment:
       SERVICE_NAME: wedding
       SERVICE_TAGS: dev
+      CONTAINER_ROLE: app
     working_dir: /var/www
+    depends_on:
+      wedding_mysql:
+        condition: service_healthy
     volumes:
       - ./:/var/www
       - ./docker-compose/php/local.ini:/usr/local/etc/php/conf.d/local.ini
@@ -49,6 +54,11 @@ services:
       MYSQL_DATABASE: wedding
       MYSQL_USER: wedding
       MYSQL_PASSWORD: password
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 2s
+      retries: 10
     volumes:
       - wedding_mysql_data:/var/lib/mysql
     networks:
@@ -66,6 +76,33 @@ services:
       PMA_PASSWORD: password
     depends_on:
       - wedding_mysql
+    networks:
+      - wedding_app_network
+  queue:
+    build:
+      args:
+        user: crop
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: wedding_app_image
+    environment:
+      - CONTAINER_ROLE=queue
+    container_name: wedding_app_queue
+    restart: unless-stopped
+    working_dir: /var/www
+    deploy:
+      resources:
+        limits:
+          cpus: '5'
+          memory: 500M
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - node_modules:/var/www/node_modules
+    depends_on:
+      - wedding_mysql
+      - wedding_app
     networks:
       - wedding_app_network
 volumes:
