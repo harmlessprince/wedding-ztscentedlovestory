@@ -65,9 +65,7 @@
         body {
             margin: 0 !important;
             padding: 0 !important;
-            background-color: #ffffff;
-            /*background-color: #f4f4f4;*/
-            color: #213049;
+            background-color: #f4f4f4;
             font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
