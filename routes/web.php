@@ -30,7 +30,9 @@ Route::get('/rsvp', function () {
 })->name('rsvp');
 
 Route::get('/invitation', function () {
-    return view('invitation')->with(['recipientName' => "Jong Dow"]);
+    return view('rsvp-email-original')->with(['data' => [
+        'first_name' => "john",
+    ]]);
 })->name('invitation');
 
 
