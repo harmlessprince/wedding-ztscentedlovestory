@@ -191,7 +191,7 @@
                           text-align: center;
                         "
                                     >
-                                        Zulias Ololade
+                                        Zuliat Ololade
                                     </p>
                                 </td>
                             </tr>
