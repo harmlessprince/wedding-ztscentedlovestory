@@ -6,24 +6,24 @@
     xmlns:o="urn:schemas-microsoft-com:office:office"
 >
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="x-apple-disable-message-reformatting" />
-    <meta name="color-scheme" content="light" />
-    <meta name="supported-color-schemes" content="light" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="x-apple-disable-message-reformatting"/>
+    <meta name="color-scheme" content="light"/>
+    <meta name="supported-color-schemes" content="light"/>
     <meta
         name="format-detection"
         content="telephone=no,address=no,email=no,date=no,url=no"
     />
     <title>Wedding Invitation - Aqid & Walimatul Nikkah</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
         href="https://fonts.googleapis.com/css2?family=Playwrite+CZ:wght@100..400&display=swap"
         rel="stylesheet"
     />
-    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet"/>
 
     <!--[if mso]>
     <noscript>
@@ -87,19 +87,24 @@
                 width: 100% !important;
                 max-width: 100% !important;
             }
+
             .email-body-padding {
                 padding: 30px 0px !important;
             }
+
             .name-text {
                 font-size: 36px !important;
             }
+
             .header-text {
                 padding: 20px 15px 10px !important;
                 font-size: 12px !important;
             }
+
             .body-text {
                 font-size: 14px !important;
             }
+
             .date-box {
                 padding: 12px 20px !important;
             }
@@ -169,8 +174,9 @@
                         background="https://res.cloudinary.com/ibreathcode/image/upload/v1764440874/product/bg-envelope_qoccre.png"
                     >
                         <!--[if gte mso 9]>
-                        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:auto;">
-                            <v:fill type="frame" src="bg-envelope.png" color="#ffffff" />
+                        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"
+                                style="width:600px;height:auto;">
+                            <v:fill type="frame" src="bg-envelope.png" color="#ffffff"/>
                             <v:textbox inset="0,0,0,0">
                         <![endif]-->
                         <table
@@ -374,9 +380,9 @@
 
                             <tr>
                                 <td
-                                    bgcolor="#8b3a3a"
+
                                     style="
-                        background-color: #8b3a3a;
+
                         height: 25px;
                         padding: 0;
                       "
@@ -435,7 +441,7 @@
                         "
                                     >
                                         We are truly honored to have you confirm your presence
-                                        at our <strong> Aqid and Walimatul Nikkah </strong>. <br />
+                                        at our <strong> Aqid and Walimatul Nikkah </strong>. <br/>
                                     </p>
                                     <p
                                         class="body-text"
@@ -643,7 +649,7 @@
                           font-weight: 400;
                         "
                                     >
-                                        Warmly,<br />Taofeeq & Zuliat
+                                        Warmly,<br/>Taofeeq & Zuliat
                                     </p>
                                 </td>
                             </tr>
