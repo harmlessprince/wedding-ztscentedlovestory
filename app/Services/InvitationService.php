@@ -29,9 +29,7 @@ class InvitationService
         Browsershot::html($html)
             ->setNodeBinary('/usr/bin/node')
             ->setChromePath('/usr/bin/chromium')
-            ->addChromiumArguments([
-                'no-sandbox'
-            ])
+            ->noSandbox()
             ->select('.email-container')
             ->windowSize(600, 500)
             ->deviceScaleFactor(2)
