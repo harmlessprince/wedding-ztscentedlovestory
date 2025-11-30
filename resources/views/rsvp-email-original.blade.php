@@ -201,7 +201,7 @@
                             <tr>
                                 <td align="center">
                                     <img
-                                        src="{{asset('/img/ring.svg')}}"
+                                        src="https://res.cloudinary.com/ibreathcode/image/upload/v1764449569/product/realistic-wedding-ring-illustration-isolated_1_sijgnm.png"
                                         alt="ring"
                                         style="width: 32px; height: 27px"
                                     />
