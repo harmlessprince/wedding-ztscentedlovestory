@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Middleware\ValidateRsvpHash;
+use App\Jobs\ProcessInvitationJob;
 use App\Models\Rsvp;
+use App\Services\InvitationService;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Mail\ContactMail;
+use Illuminate\Support\Str;
 
 
 Route::fallback(function () {
@@ -50,27 +54,25 @@ Route::post('/contact', function (Request $request) {
         'side' => 'required|string|in:GROOM,BRIDE',
     ]);
 
+    $inviteCode = strtoupper(Str::random(4)) . "-" . random_int(1000, 9999);
     // Generate hash from surname, first name, email, phone
     $hashSource = $validated['surname'] . $validated['first_name'] . $validated['email'] . $validated['phone'];
     $hash = hash('sha256', $hashSource);
-
-    // Check if record exists
-    $rsvp = Rsvp::where('hash', $hash)->first();
-//    dd($rsvp);
-    if ($rsvp) {
-        // Record exists, send email
-        Mail::to($validated['email'])->send(new ContactMail($rsvp->toArray()));
-        return redirect()->route('rsvp-confirmation', ['hash' => $hash])
-            ->with('message', 'RSVP submitted successfully and email sent.');
-    }
-
-    // Record does not exist, create it
     $validated['hash'] = $hash;
-    $rsvp = Rsvp::create($validated);
-
-    // Send email
-    Mail::to($validated['email'])->send(new ContactMail($rsvp->toArray()));
-
-    return redirect()->route('rsvp-confirmation', ['hash' => $hash])
-        ->with('message', 'RSVP submitted successfully and email sent.');
+    $validated['invite_code'] = $inviteCode;
+    $rsvp = Rsvp::query()->where('hash', $validated['hash'])->first();
+    if ($rsvp) {
+        if ($rsvp->invite_code != null) {
+            $inviteCode = $rsvp->invite_code;
+        }else{
+            $rsvp->invite_code = $inviteCode;
+            $rsvp->save();
+        }
+        ProcessInvitationJob::dispatch($rsvp->hash);
+    } else {
+        Rsvp::create($validated);
+        ProcessInvitationJob::dispatch($hash);
+    }
+    return redirect()->route('rsvp-confirmation', ['hash' => $hash, 'invite_code' => $inviteCode])
+        ->with('message', 'Your reservation has been confirmed and your IV will be sent to you shortly.');
 })->name('contact');

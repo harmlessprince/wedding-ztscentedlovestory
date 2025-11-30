@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->enum('side', ['GROOM', 'BRIDE'])->nullable();
             $table->text('message')->nullable();
+            $table->text('invite_card_url')->nullable();
+            $table->string('invite_code')->nullable();
             $table->string('hash')->unique();
             $table->timestamps();
         });

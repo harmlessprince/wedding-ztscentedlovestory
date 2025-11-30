@@ -15,5 +15,7 @@ class Rsvp extends Model
         'type',
         'message',
         'hash',
+        'invite_card_url',
+        'invite_code',
     ];
 }

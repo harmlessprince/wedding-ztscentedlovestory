@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -12,6 +13,8 @@ use Illuminate\Queue\SerializesModels;
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
+
+    private array $data;
 
     /**
      * Create a new message instance.
@@ -28,7 +31,7 @@ class ContactMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Mail',
+            subject: $this->subject,
         );
     }
 
@@ -38,7 +41,7 @@ class ContactMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'rsvp-email',
+            view: 'rsvp-email-original',
             with: ['data' => $this->data],
         );
     }
@@ -50,6 +53,10 @@ class ContactMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+
+        return $this->data['invite_card_url'] ? [
+            Attachment::fromUrl($this->data['invite_card_url'])
+                ->as('Wedding-Invitation.png')
+        ] : [];
     }
 }
