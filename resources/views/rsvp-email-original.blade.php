@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="x-apple-disable-message-reformatting" />
+    <meta name="color-scheme" content="light" />
+    <meta name="supported-color-schemes" content="light" />
     <meta
         name="format-detection"
         content="telephone=no,address=no,email=no,date=no,url=no"
@@ -199,7 +201,7 @@
                             <tr>
                                 <td align="center">
                                     <img
-                                        src="https://res.cloudinary.com/ibreathcode/image/upload/v1764440875/product/ring_gfepe1.svg"
+                                        src="{{asset('/img/ring.svg')}}"
                                         alt="ring"
                                         style="width: 32px; height: 27px"
                                     />
@@ -431,7 +433,7 @@
                         "
                                     >
                                         We are truly honored to have you confirm your presence
-                                        at our Aqid and Walimatul Nikkah. <br />
+                                        at our <strong> Aqid and Walimatul Nikkah </strong>. <br />
                                     </p>
                                     <p
                                         class="body-text"
@@ -461,7 +463,7 @@
                           margin: 0;
                         "
                                     >
-                                        Please join us as we celebrate our ZTscentedlovestory, a
+                                        Please join us as we celebrate our <strong> ZTscentedlovestory </strong>, a
                                         union filled with serenity, gratitude, and the fragrance
                                         of barakah (blessing).
                                     </p>
