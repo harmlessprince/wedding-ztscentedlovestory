@@ -28,14 +28,16 @@
             </div>
             <section class="flex flex-col justify-center items-center my-4">
 
-                <h2 class="text-maroon text-3xl " style="font-family: 'Playwrite NZ Guides', cursive;">Zuliat
+                <h2 class="text-maroon text-3xl" style="font-family: 'Playwrite CZ', cursive, Georgia,
+                            'Times New Roman', serif">Zuliat
                     Ololade</h2>
 
                 <div class="flex justify-center items-center">
                     <img src="{{asset('/img/ring.svg')}}" alt="Rings" class="w-16 h-16">
                 </div>
 
-                <h2 class="text-maroon text-3xl" style="font-family: 'Playwrite NZ Guides', cursive;">Taofeeq
+                <h2 class="text-maroon text-3xl" style="font-family: 'Playwrite CZ', cursive, Georgia,
+                            'Times New Roman', serif">Taofeeq
                     Olamilekan</h2>
             </section>
 

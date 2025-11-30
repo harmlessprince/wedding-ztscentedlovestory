@@ -29,6 +29,10 @@ Route::get('/rsvp', function () {
     return view('rsvp');
 })->name('rsvp');
 
+Route::get('/invitation', function () {
+    return view('invitation')->with(['recipientName' => "Jong Dow"]);
+})->name('invitation');
+
 
 Route::get('/rsvp-confirmation', function (Request $request) {
     $hash = $request->query('hash');

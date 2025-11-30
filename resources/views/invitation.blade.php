@@ -21,7 +21,10 @@
         href="https://fonts.googleapis.com/css2?family=Playwrite+CZ:wght@100..400&display=swap"
         rel="stylesheet"
     />
-    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet" />
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
+
 
     <!--[if mso]>
     <noscript>
