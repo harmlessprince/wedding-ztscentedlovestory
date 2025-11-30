@@ -54,11 +54,11 @@ RUN chown -R ${user}:www-data /var/www \
 COPY ./entrypoint.sh /usr/local/bin/docker-laravel-entrypoint
 RUN chmod +x /usr/local/bin/docker-laravel-entrypoint
 
+RUN npm install -g puppeteer --unsafe-perm=true --allow-root
 
 # Use system Chrome for Puppeteer
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/google-chrome"
-
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 USER $user
 
 EXPOSE 9000
