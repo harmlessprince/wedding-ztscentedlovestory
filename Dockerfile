@@ -3,117 +3,55 @@ FROM php:8.2-fpm
 ARG user
 ARG uid
 
-
-# Prevent interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Copy composer.lock and composer.json
+# Copy composer files first for layer caching
 COPY composer.lock composer.json /var/www/
-
-# Set working directory
 WORKDIR /var/www
-# Install system packages, Node.js, Chromium and fonts + libs Puppeteer needs
+
+# Install system packages and Chrome (not Chromium)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    git \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip \
-    curl \
-    zlib1g-dev \
-    libpq-dev \
-    libzip-dev \
-    ca-certificates \
-    gnupg \
-    wget \
-    # Puppeteer/Chromium required libs (common)
-    libnss3 \
-    libatk1.0-0 \
-    libxss1 \
-    libasound2 \
-    libgbm1 \
-    libgtk-3-0 \
-    libx11-6 \
-    fonts-liberation \
-    fonts-dejavu-core \
-    fonts-noto-color-emoji \
-    chromium \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-#RUN apt-get update && apt-get install -y \
-#    git \
-#    libpng-dev \
-#    libonig-dev \
-#    libxml2-dev \
-#    zip \
-#    unzip \
-#    curl \
-#    zlib1g-dev \
-#    libpq-dev \
-#    libzip-dev \
-#    && apt-get clean \
-#    && rm -rf /var/lib/apt/lists/*
+    wget gnupg git unzip curl zip \
+    libpng-dev libzip-dev zlib1g-dev \
+    libnss3 libatk1.0-0 libxss1 libasound2 libgbm1 libgtk-3-0 libx11-6 \
+    fonts-liberation fonts-dejavu-core fonts-noto-color-emoji \
+    libxrandr2 libxdamage1 libxcomposite1 libxcursor1 libxi6 libxext6 \
+    libpangocairo-1.0-0 libcairo2 libpango-1.0-0 libjpeg62-turbo libxrender1 \
+    # Add Google Chrome Repo
+    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+    && apt-get update \
+    && apt-get install -y google-chrome-stable \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql mbstring bcmath gd pcntl exif
 
-# Install dependencies
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
-
-# Install Node.js 22 and npm
+# Install Node 22 (latest LTS you want)
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install -y nodejs
 
-# Show versions (optional)
-RUN echo "Node: " && node -v || true
-RUN echo "NPM: " && npm -v || true
-RUN echo "Chromium: " && chromium --version || true
-
-
-# Install composer
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-
-# Add user for the Laravel application
+# Create non-root user
 RUN groupadd -g $uid $user \
-    && useradd -u $uid -ms /bin/bash -g $user $user
+    && useradd -u $uid -ms /bin/bash -g $user -G www-data,audio,video $user
 
-# Copy existing application directory permissions
+# Copy app with correct ownership
 COPY --chown=$user:www-data . /var/www
 
-#RUN chown -R $USER:www-data /var/www
-#RUN chown -R $USER:www-data /var/www/node_modules
-#RUN find /var/www -type f -exec chmod 644 {} \;
-#RUN find /var/www -type d -exec chmod 755 {} \;
-#RUN chgrp -R www-data storage bootstrap/cache
-#RUN chmod -R ug+rwx storage bootstrap/cache
+# Set permissions for Laravel storage & cache
 RUN chown -R ${user}:www-data /var/www \
     && find /var/www -type f -exec chmod 644 {} \; \
     && find /var/www -type d -exec chmod 755 {} \; \
-    && chgrp -R www-data storage bootstrap/cache \
     && chmod -R ug+rwx storage bootstrap/cache
-RUN #chmod +x node_modules/@esbuild/linux-x64/bin/esbuild
 
-
-COPY ./entrypoint.sh /usr/local/bin/docker-laravel-entrypoint
-RUN chmod +x /usr/local/bin/docker-laravel-entrypoint
-
-# Ensure a predictable chromium binary path and create a symlink
-RUN if [ -x "/usr/bin/chromium" ]; then ln -sf /usr/bin/chromium /usr/bin/chrome || true; \
-    elif [ -x "/usr/bin/chromium-browser" ]; then ln -sf /usr/bin/chromium-browser /usr/bin/chrome || true; fi
-
-# Optional: install any missing sandbox helper (only if distro package exists / supported)
-# (Keep this only if package is available for your base distro)
-RUN apt-get update && apt-get install -y --no-install-recommends chromium-sandbox || true
-
-# (ensure puppeteer will use system chromium)
+# Use system Chrome for Puppeteer
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium"
+ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/google-chrome"
 
-# Change current user to www
 USER $user
 
-# Expose port 9000 and start php-fpm server
 EXPOSE 9000
-
 ENTRYPOINT ["/usr/local/bin/docker-laravel-entrypoint"]
-
