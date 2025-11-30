@@ -81,8 +81,8 @@ services:
   queue:
     build:
       args:
-        user: crop
-        uid: 1000
+        user: ubuntu
+        uid: 1001
       context: ./
       dockerfile: Dockerfile
     image: wedding_app_image
