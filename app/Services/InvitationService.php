@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Services;
+
 use Cloudinary\Cloudinary;
 use Illuminate\Support\Facades\Log;
 use Spatie\Browsershot\Browsershot;
@@ -39,19 +41,23 @@ class InvitationService
 
 
         // Upload to cloudinary
-        return self::uploadToCloudinary($imagePath, [
+        $cloud_url = self::uploadToCloudinary($imagePath, [
             'folder' => 'invitations',
             'public_id' => $fileName,
             'resource_type' => 'image',
         ]);
+        return [
+            'cloud_url' => $cloud_url,
+            'local_url' => $imagePath,
+        ];
     }
 
 
     /**
      * Upload a local file to Cloudinary and return upload result array
      *
-     * @param string $localPath  Absolute path to local file
-     * @param array  $options    Options forwarded to Cloudinary upload API
+     * @param string $localPath Absolute path to local file
+     * @param array $options Options forwarded to Cloudinary upload API
      * @return string|null        Cloudinary response (associative) or null on failure
      */
     public static function uploadToCloudinary(string $localPath, array $options = []): ?string
@@ -66,7 +72,7 @@ class InvitationService
             $cloudinary = new Cloudinary([
                 'cloud' => [
                     'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-                    'api_key'    => env('CLOUDINARY_API_KEY'),
+                    'api_key' => env('CLOUDINARY_API_KEY'),
                     'api_secret' => env('CLOUDINARY_API_SECRET'),
                 ]
             ]);

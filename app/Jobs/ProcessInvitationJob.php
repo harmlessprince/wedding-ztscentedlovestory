@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Random\RandomException;
 
 class ProcessInvitationJob implements ShouldQueue
@@ -31,6 +32,7 @@ class ProcessInvitationJob implements ShouldQueue
      */
     public function handle(): void
     {
+        $local_url = null;
         try {
             // Check if record exists
             $rsvp = Rsvp::query()->where('hash', $this->hash)->first();
@@ -43,12 +45,21 @@ class ProcessInvitationJob implements ShouldQueue
                 Mail::to($rsvp->email)->send(new ContactMail($rsvp->toArray()));
             } else {
                 $attachment = InvitationService::generateInvitation($rsvp->first_name);
-                $rsvp->invite_card_url = $attachment;
+                $local_url = $attachment['local_url'];
+                $rsvp->invite_card_url = $attachment['cloud_url'];
                 $rsvp->save();
                 Mail::to($rsvp->email)->send(new ContactMail($rsvp->toArray()));
             }
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
+        } finally {
+            if ($local_url && file_exists($local_url)) {
+                if (@unlink($local_url)) {
+                    Log::info("Unlinked file: {$local_url}");
+                } else {
+                    Log::error("Failed to unlink file: {$local_url}");
+                }
+            }
         }
     }
 }
