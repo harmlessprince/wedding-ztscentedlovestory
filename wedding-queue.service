@@ -1,0 +1,32 @@
+[Unit]
+Description=Wedding App queue worker (wedding_app container)
+After=docker.service network.target
+Requires=docker.service
+
+[Service]
+Type=simple
+# Change to the user who can run docker (or keep as root)
+User=ubuntu
+# Optional: set working dir where your docker-compose.yml lives
+WorkingDirectory=/home/ubuntu/wedding-ztscentedlovestory
+
+# Ensure compose stack is up before running the exec command
+ExecStartPre=/usr/bin/docker compose -f /home/ubuntu/wedding-ztscentedlovestory/docker-compose.yml up -d --remove-orphans
+
+# The actual command to run the long-running worker.
+ExecStart=/usr/bin/docker compose -f /home/ubuntu/wedding-ztscentedlovestory/docker-compose.yml exec wedding_app php artisan queue:work
+
+# On stop, ask Laravel to gracefully restart workers (best-effort)
+ExecStop=/usr/bin/docker compose -f /home/ubuntu/wedding-ztscentedlovestory/docker-compose.yml exec -T wedding_app php artisan queue:restart || true
+
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+KillMode=process
+
+# Optional: limit number of restarts in a short window
+StartLimitBurst=5
+StartLimitIntervalSec=60
+
+[Install]
+WantedBy=multi-user.target

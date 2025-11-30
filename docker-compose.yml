@@ -88,33 +88,6 @@ services:
       - wedding_mysql
     networks:
       - wedding_app_network
-  queue:
-    build:
-      args:
-        user: ubuntu
-        uid: 1001
-      context: .
-      dockerfile: Dockerfile
-    image: wedding_app_image
-    environment:
-      - CONTAINER_ROLE=queue
-    container_name: wedding_app_queue
-    restart: unless-stopped
-    working_dir: /var/www
-    deploy:
-      resources:
-        limits:
-          cpus: '1'
-          memory: 500M
-    volumes:
-      - ./:/var/www
-      - ./docker-compose/php/local.ini:/usr/local/etc/php/conf.d/local.ini
-      - node_modules:/var/www/node_modules
-    depends_on:
-      - wedding_mysql
-      - wedding_app
-    networks:
-      - wedding_app_network
 volumes:
   wedding_mysql_data:
     driver: local
