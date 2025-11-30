@@ -39,7 +39,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-dejavu-core \
     fonts-noto-color-emoji \
     chromium \
-    chromium-sandbox \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 #RUN apt-get update && apt-get install -y \
