@@ -50,7 +50,7 @@ Route::post('/contact', function (Request $request) {
         'first_name' => 'required|string',
         'email' => 'required|email',
         'phone' => 'required|string',
-        'message' => 'required|string',
+        'message' => 'nullable|string',
         'side' => 'required|string|in:GROOM,BRIDE',
     ]);
 
