@@ -9,6 +9,10 @@ services:
         gid: 1001
       context: .
       dockerfile: Dockerfile
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
     image: wedding_app_image
     restart: unless-stopped
     tty: true
