@@ -10,19 +10,19 @@ COPY composer.lock composer.json /var/www/
 WORKDIR /var/www
 
 # Install system packages and Chrome (not Chromium)
+# Install system packages and Chrome using GPG key (NO apt-key)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget gnupg git unzip curl zip \
-    libpng-dev libzip-dev zlib1g-dev \
     libnss3 libatk1.0-0 libxss1 libasound2 libgbm1 libgtk-3-0 libx11-6 \
     fonts-liberation fonts-dejavu-core fonts-noto-color-emoji \
-    libxrandr2 libxdamage1 libxcomposite1 libxcursor1 libxi6 libxext6 \
-    libpangocairo-1.0-0 libcairo2 libpango-1.0-0 libjpeg62-turbo libxrender1 \
-    # Add Google Chrome Repo
-    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+    # Add Google signing key via GPG
+    && wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg \
+    # Add Chrome repo
+    && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
     && apt-get update \
     && apt-get install -y google-chrome-stable \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring bcmath gd pcntl exif
