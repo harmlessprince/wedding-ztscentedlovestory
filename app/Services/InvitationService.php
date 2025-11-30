@@ -32,7 +32,10 @@ class InvitationService
             ->addChromiumArguments([
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
                 '--disable-gpu',
+                '--single-process',
+                '--no-zygote',
             ])
             ->select('.email-container')
             ->windowSize(600, 500)

@@ -98,7 +98,15 @@ RUN #chmod +x node_modules/@esbuild/linux-x64/bin/esbuild
 COPY ./entrypoint.sh /usr/local/bin/docker-laravel-entrypoint
 RUN chmod +x /usr/local/bin/docker-laravel-entrypoint
 
-# Puppeteer env: skip downloading Chromium (we use system chromium)
+# Ensure a predictable chromium binary path and create a symlink
+RUN if [ -x "/usr/bin/chromium" ]; then ln -sf /usr/bin/chromium /usr/bin/chrome || true; \
+    elif [ -x "/usr/bin/chromium-browser" ]; then ln -sf /usr/bin/chromium-browser /usr/bin/chrome || true; fi
+
+# Optional: install any missing sandbox helper (only if distro package exists / supported)
+# (Keep this only if package is available for your base distro)
+RUN apt-get update && apt-get install -y --no-install-recommends chromium-sandbox || true
+
+# (ensure puppeteer will use system chromium)
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium"
 

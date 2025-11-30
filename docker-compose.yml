@@ -9,10 +9,6 @@ services:
         gid: 1001
       context: .
       dockerfile: Dockerfile
-    cap_add:
-      - SYS_ADMIN
-    security_opt:
-      - seccomp:unconfined
     image: wedding_app_image
     restart: unless-stopped
     tty: true
@@ -20,6 +16,8 @@ services:
       SERVICE_NAME: wedding
       SERVICE_TAGS: dev
       CONTAINER_ROLE: app
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
+      PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium
     working_dir: /var/www
     depends_on:
       wedding_mysql:
@@ -28,6 +26,14 @@ services:
       - ./:/var/www
       - ./docker-compose/php/local.ini:/usr/local/etc/php/conf.d/local.ini
       - node_modules:/var/www/node_modules
+    shm_size: '1gb'
+    tmpfs:
+      - /dev/shm:size=1g
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
     networks:
       - wedding_app_network
 
@@ -87,7 +93,7 @@ services:
       args:
         user: ubuntu
         uid: 1001
-      context: ./
+      context: .
       dockerfile: Dockerfile
     image: wedding_app_image
     environment:
