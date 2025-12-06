@@ -9,11 +9,11 @@ services:
         gid: 1001
       context: .
       dockerfile: Dockerfile
-    image: wedding_app_image
+    container_name: wedding_app
     restart: unless-stopped
     tty: true
     environment:
-      SERVICE_NAME: wedding
+      SERVICE_NAME: wedding_app
       SERVICE_TAGS: dev
       CONTAINER_ROLE: app
       PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
