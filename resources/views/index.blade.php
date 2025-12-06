@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="{{asset('/img/solar_heart-bold-duotone.svg')}}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="Your Page Title" />
+    <meta property="og:title" content="Aqid & Walimatul Nikkah - Zuliat & Taofeeq" />
     <meta property="og:description" content="Aqid & Walimatul Nikkah - Zuliat & Taofeeq" />
     <meta property="og:image" content="https://ztscentedlovestory.taoforge.org/" />
     <meta property="og:url" content="https://res.cloudinary.com/dfyddd3mr/image/upload/v1765056702/wedding_iv_1_yaofsi.jpg" />
