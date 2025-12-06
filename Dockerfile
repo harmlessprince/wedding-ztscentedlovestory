@@ -6,7 +6,7 @@ ARG uid
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Copy composer files first for layer caching
-COPY composer.lock composer.json /var/www/
+COPY composer.json /var/www/
 WORKDIR /var/www
 
 # Install system packages and Chrome (not Chromium)
