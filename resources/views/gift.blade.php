@@ -62,14 +62,14 @@
             @foreach($items as $item)
                 <div class="bg-[#E5D9D9] rounded-2xl p-6">
                     <h3 class="text-gray-800 text-lg font-normal mb-1">{{$item->name}}</h3>
-                    <p class="text-gray-800 text-2xl font-bold mb-4">{{$item->price}}</p>
+                    <p class="text-gray-800 text-2xl font-bold mb-4">₦{{number_format($item->price, 2)}}</p>
                     <div class="flex gap-3">
-                        <button class="send-money-btn flex-1 bg-[#C9B0B0] text-maroon py-3 rounded-full font-medium hover:opacity-90 transition" data-item-id="{{$item->id}}">
+                        <button class="send-money-btn flex-1 bg-[#C9B0B0] text-maroon py-3 rounded-full font-medium hover:opacity-90 transition" id="send-money-btn-{{$item->price}}" data-item-id="{{$item->price}}" data-item-amount="{{$item->price}}">
                             Send Money
                         </button>
-                        <a class=" flex place-content-center buy-online-btn flex-1 bg-maroon text-white py-3 rounded-full font-medium hover:opacity-90 transition " data-item-id="{{$item->id}}" data-url="{{$item->buy_online_url}}">
+                        <button class=" flex place-content-center buy-online-btn flex-1 bg-maroon text-white py-3 rounded-full font-medium hover:opacity-90 transition " data-item-id="{{$item->id}}" data-url="{{$item->buy_online_url}}">
                             Buy online
-                        </a>
+                        </button>
                     </div>
                 </div>
             @endforeach
@@ -120,12 +120,12 @@
                 </div>
                 <div class="flex flex-col gap-2 justify-center items-center">
                     <div>
-                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="5000">5,000</button>
-                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="10000">10,000</button>
-                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="20000">20,000</button>
-                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="50000">50,000</button>
+                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="5000">₦5,000</button>
+                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="10000">₦10,000</button>
+                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="20000">₦20,000</button>
+                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="50000">₦50,000</button>
                     </div>
-                    <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="100000">100,000</button>
+                    <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="100000">₦100,000</button>
 
                 </div>
                 <button

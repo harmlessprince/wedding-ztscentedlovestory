@@ -379,8 +379,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             document.querySelectorAll('.send-money-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const itemId = btn.getAttribute('data-item-id');
-                    console.log('Send money for item:', itemId);
+                    const amount = btn.getAttribute('data-item-id');
+                    console.log('Send money for item:', amount);
+                    openModalFunc(parseInt(amount))
                 });
             });
 
@@ -401,28 +402,44 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Failed to load wishlist:', error);
         }
     }
+    function closeModalFunc(){
+        const amountInput = document.getElementById('amountInput')
+
+        if (amountInput){
+            amountInput.value = null
+        }
+
+        cashModalContent.classList.remove('translate-y-0');
+        cashModalContent.classList.add('translate-y-full');
+        setTimeout(() => {
+            cashModal.classList.add('hidden');
+            cashModal.classList.remove('flex');
+        }, 300);
+    }
+    function openModalFunc(amount = null){
+
+        cashModal.classList.remove('hidden');
+        cashModal.classList.add('flex');
+
+        const amountInput = document.getElementById('amountInput')
+
+        if (amountInput && amount){
+            amountInput.value = amount
+        }
+
+        setTimeout(() => {
+            cashModalContent.classList.remove('translate-y-full');
+            cashModalContent.classList.add('translate-y-0');
+        }, 10);
+    }
 
     if (cashBtn && cashModal && cashModalContent) {
         cashBtn.addEventListener('click', () => {
-            cashModal.classList.remove('hidden');
-            cashModal.classList.add('flex');
-
-            setTimeout(() => {
-                cashModalContent.classList.remove('translate-y-full');
-                cashModalContent.classList.add('translate-y-0');
-            }, 10);
+            openModalFunc()
         });
     }
 
     if (closeModal && cashModal && cashModalContent) {
-        const closeModalFunc = () => {
-            cashModalContent.classList.remove('translate-y-0');
-            cashModalContent.classList.add('translate-y-full');
-            setTimeout(() => {
-                cashModal.classList.add('hidden');
-                cashModal.classList.remove('flex');
-            }, 300);
-        };
 
         closeModal.addEventListener('click', closeModalFunc);
 
@@ -432,6 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
 
     const amountButtons = document.querySelectorAll('.amount-btn');
     const amountInput = document.getElementById('amountInput');
