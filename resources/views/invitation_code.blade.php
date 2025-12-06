@@ -21,9 +21,8 @@
    pb-24">
 
     @include('partials.header')
-    <div class="pt-20 pb-12 px-6">
-{{--        <input id="invitationCardUrl" class="flex" type="text" value="" name="invitationCardUrlInput">--}}
-        <input type="hidden" id="invitationCardUrl" name="invitationCardUrl" value="GROOM">
+    <div class="">
+        <input type="hidden" id="invitationCardUrl" name="invitationCardUrl" value="">
     </div>
     <!-- Form Section - Enter Code -->
     <main id="codeFormSection" class="pt-20 pb-12 px-6">
