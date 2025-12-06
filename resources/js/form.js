@@ -6,9 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const brideGuestBtn = document.getElementById('brideGuestBtn');
     const guestTypeInput = document.getElementById('guestType');
     const submitBtn = ticketForm?.querySelector('button[type="submit"]');
-    // const token = document
-    //     .querySelector('meta[name="csrf-token"]')
-    //     .getAttribute('content');
+
+    // code
+    const codeFormSection = document.getElementById('codeFormSection');
+    const invitationSection = document.getElementById('invitationSection');
+    const codeFormButton = document.getElementById('codeFormButton');
+    const codeForm = document.getElementById('codeForm');
+    const invitationCodeInput = document.getElementById('invitationCode');
+    const displayedCode = document.getElementById('displayedCode');
+    const inviteeName = document.getElementById('inviteeName');
+    const invitationCardUrlInput = document.getElementById('invitationCardUrl')
     const API_ENDPOINT = 'api/get-ticket';
 
     function setGuestType(type, activeBtn, inactiveBtn) {
@@ -26,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const randomNum = Math.floor(1000 + Math.random() * 9000);
         return `${prefix}-${randomNum}`;
     }
+
     if (groomGuestBtn && brideGuestBtn) {
         if (groomGuestBtn && brideGuestBtn) {
             groomGuestBtn.addEventListener('click', () =>
@@ -123,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // ✅ Switch views
                 formSection.classList.add('hidden');
                 successSection.classList.remove('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({top: 0, behavior: 'smooth'});
 
             } catch (err) {
                 alert(err.message);
@@ -132,4 +140,50 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+
+    if (codeForm){
+        codeForm.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const code = invitationCodeInput.value.trim();
+            console.log(code)
+
+            if (!code) {
+                alert('Please enter your invitation code');
+                return;
+            }
+            // ✅ Disable button during request
+            codeFormButton.disabled = true;
+            codeFormButton.textContent = 'Validating...';
+
+            try {
+                const response = await fetch(`api/get-ticket/${encodeURIComponent(code)}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                const data = await response.json();
+
+                displayedCode.textContent = data.invitation_code;
+                inviteeName.textContent =  data.invite_name;
+                invitationCardUrlInput.value = data.invite_card_url
+                codeFormSection.classList.add('hidden');
+                invitationSection.classList.remove('hidden');
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (error) {
+                console.error(error);
+                alert('Something went wrong. Please try again.');
+            } finally {
+                // ✅ Always re-enable button
+                codeFormButton.disabled = false;
+                codeFormButton.textContent = 'Get Ticket';
+            }
+        })
+    }
+
 })

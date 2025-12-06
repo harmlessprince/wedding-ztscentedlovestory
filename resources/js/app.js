@@ -222,13 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    const codeForm = document.getElementById('codeForm');
     const codeFormSection = document.getElementById('codeFormSection');
     const invitationSection = document.getElementById('invitationSection');
     const invitationCodeInput = document.getElementById('invitationCode');
-    const displayedCode = document.getElementById('displayedCode');
-    const inviteeName = document.getElementById('inviteeName');
     const pasteBtn = document.getElementById('pasteBtn');
     const clearBtn = document.getElementById('clearBtn');
     const invitationDownloadBtn = document.getElementById('downloadBtn');
@@ -246,31 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (codeForm) {
-        codeForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const code = invitationCodeInput.value.trim().toUpperCase();
-
-            if (!code) {
-                alert('Please enter an invitation code');
-                return;
-            }
-            console.log('Ticket ID:', code);
-
-
-            // Todo, backend will return the actual name
-            const displayName = code;
-
-            displayedCode.textContent = code;
-            inviteeName.textContent = displayName;
-
-            codeFormSection.classList.add('hidden');
-            invitationSection.classList.remove('hidden');
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
 
 
     if (clearBtn) {
@@ -282,29 +253,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function downloadInvitationCard(originalUrl) {
+        if (!originalUrl){
+            alert('Invalid invite code')
+            return
+        }
+
+        const downloadUrl = originalUrl.replace(
+            '/upload/',
+            '/upload/fl_attachment/'
+        );
+
+        window.location.href = downloadUrl;
+    }
 
     if (invitationDownloadBtn) {
         invitationDownloadBtn.addEventListener('click', async () => {
+            const invitationCardUrlInput = document.getElementById('invitationCardUrl')
             try {
-                const imgEl = document.getElementById('invitationImage');
-                if (!imgEl) {
-                    alert('No invitation available to download');
-                    return;
-                }
-
-                const src = imgEl.getAttribute('src');
-                const res = await fetch(src, { cache: 'no-cache' });
-                if (!res.ok) throw new Error('Failed to fetch image');
-
-                const blob = await res.blob();
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = src.split('/').pop() || 'invitation.png';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-                URL.revokeObjectURL(url);
+                downloadInvitationCard(invitationCardUrlInput.value)
+                // const imgEl = document.getElementById('invitationImage');
+                // if (!imgEl) {
+                //     alert('No invitation available to download');
+                //     return;
+                // }
+                //
+                // const src = imgEl.getAttribute('src');
+                // const res = await fetch(src, { cache: 'no-cache' });
+                // if (!res.ok) throw new Error('Failed to fetch image');
+                //
+                // const blob = await res.blob();
+                // const url = URL.createObjectURL(blob);
+                // const a = document.createElement('a');
+                // a.href = url;
+                // a.download = src.split('/').pop() || 'invitation.png';
+                // document.body.appendChild(a);
+                // a.click();
+                // a.remove();
+                // URL.revokeObjectURL(url);
             } catch (err) {
                 console.error('Download failed', err);
                 alert('Download failed. Please try again.');

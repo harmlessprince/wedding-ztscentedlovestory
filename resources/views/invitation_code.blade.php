@@ -21,7 +21,10 @@
    pb-24">
 
     @include('partials.header')
-
+    <div class="pt-20 pb-12 px-6">
+{{--        <input id="invitationCardUrl" class="flex" type="text" value="" name="invitationCardUrlInput">--}}
+        <input type="hidden" id="invitationCardUrl" name="invitationCardUrl" value="GROOM">
+    </div>
     <!-- Form Section - Enter Code -->
     <main id="codeFormSection" class="pt-20 pb-12 px-6">
         <!-- Header with Back Button and Title -->
@@ -70,6 +73,7 @@
             <button
                 type="submit"
                 class="w-full bg-maroon text-white py-4 rounded-full font-semibold hover:bg-maroon/90 transition"
+                id="codeFormButton"
             >
                 Proceed
             </button>

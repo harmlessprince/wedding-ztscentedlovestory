@@ -58,6 +58,25 @@ Route::post('/get-ticket', function (Request $request) {
 })->name('get-ticket');
 
 
+Route::get('/get-ticket/{code}', function (Request $request, $code) {
+
+
+    $rsvp = Rsvp::query()->where('invite_code', $code)->first();
+    if (!$rsvp) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Invalid inviation code',
+        ]);
+    }
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Your reservation has been confirmed and your IV will be sent to your email shortly.',
+        'invitation_code' => $rsvp->invite_code,
+        'invite_name' => strtoupper($rsvp->first_name),
+        'invite_card_url' => $rsvp->invite_card_url,
+    ]);
+})->name('get-ticket-b-code');
 Route::post(
     '/webhooks/paystack',
     [PaystackWebhookController::class, 'handle']

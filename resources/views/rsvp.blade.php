@@ -163,7 +163,7 @@
 
             <h1 class="text-gray-800 text-3xl font-bold text-center mb-3">Successful</h1>
             <p class="text-gray-600 text-center mb-8 text-sm px-4">
-                Thank you! Your invitation card will be sent to your email.
+                Thank you! Your invitation card will be sent to your email or just download below.
             </p>
 
 
