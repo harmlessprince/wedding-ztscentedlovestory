@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayedCode = document.getElementById('displayedCode');
     const inviteeName = document.getElementById('inviteeName');
     const invitationCardUrlInput = document.getElementById('invitationCardUrl')
+    const invitationCardContainerImage = document.getElementById('invitationCardContainer')
     const API_ENDPOINT = 'api/get-ticket';
 
     function setGuestType(type, activeBtn, inactiveBtn) {
@@ -167,10 +168,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 const data = await response.json();
-
+                console.log(data)
+                if (!data.success){
+                    alert("Invalid invitation code")
+                    return
+                }
                 displayedCode.textContent = data.invitation_code;
-                inviteeName.textContent =  data.invite_name;
+                // inviteeName.textContent =  data.invite_name;
                 invitationCardUrlInput.value = data.invite_card_url
+                invitationCardContainerImage.src = data.invite_card_url
                 codeFormSection.classList.add('hidden');
                 invitationSection.classList.remove('hidden');
 
