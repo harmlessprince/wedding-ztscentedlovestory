@@ -3,7 +3,6 @@ import Paystack from '@paystack/inline-js';
 const paystackKey = import.meta.env.VITE_PAYSTACK_KEY;
 const popup = new Paystack()
 const paystackButton = document.getElementById('paystackButton')
-const paystackButton = document.getElementById('send-money-btn')
 const email = document.getElementById('email')
 const fullName = document.getElementById('fullName')
 const phoneNumber = document.getElementById('phoneNumber')
