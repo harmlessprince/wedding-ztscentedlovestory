@@ -74,7 +74,7 @@
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Reading of the Holy Quran</span>
+                <span>Recitation of the Holy Quran</span>
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
