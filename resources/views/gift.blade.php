@@ -20,7 +20,6 @@
 
 <main class="max-w-md mx-auto min-h-screen bg-[#EEE6E6] relative pb-24">
     @include('partials.header')
-
     <!-- Main Gift Page -->
     <section id="giftMain" class="px-6 pt-24 pb-8">
         <h2 class="text-gray-800 text-3xl font-bold text-center mb-8">Gift the Couple</h2>
@@ -64,7 +63,7 @@
                     <h3 class="text-gray-800 text-lg font-normal mb-1">{{$item->name}}</h3>
                     <p class="text-gray-800 text-2xl font-bold mb-4">₦{{number_format($item->price, 2)}}</p>
                     <div class="flex gap-3">
-                        <button class="send-money-btn flex-1 bg-[#C9B0B0] text-maroon py-3 rounded-full font-medium hover:opacity-90 transition" id="send-money-btn-{{$item->price}}" data-item-id="{{$item->price}}" data-item-amount="{{$item->price}}">
+                        <button class="send-money-btn flex-1 bg-[#C9B0B0] text-maroon py-3 rounded-full font-medium hover:opacity-90 transition" id="send-money-btn-{{$item->id}}" data-item-id="{{$item->id}}" data-item-amount="{{$item->price}}">
                             Send Money
                         </button>
                         <button class=" flex place-content-center buy-online-btn flex-1 bg-maroon text-white py-3 rounded-full font-medium hover:opacity-90 transition " data-item-id="{{$item->id}}" data-url="{{$item->buy_online_url}}">
@@ -73,7 +72,9 @@
                     </div>
                 </div>
             @endforeach
+
         </div>
+
     </section>
 
     <!-- Cash Gift Modal -->

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaystackWebhookController;
 use App\Http\Controllers\WishlistController;
 use App\Jobs\ProcessInvitationJob;
 use App\Models\Rsvp;
@@ -57,4 +58,7 @@ Route::post('/get-ticket', function (Request $request) {
 })->name('get-ticket');
 
 
-Route::get('wishlists', [WishlistController::class, 'index']);
+Route::post(
+    '/webhooks/paystack',
+    [PaystackWebhookController::class, 'handle']
+)->name('webhooks.paystack');

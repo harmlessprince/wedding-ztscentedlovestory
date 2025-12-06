@@ -2,9 +2,12 @@ import './bootstrap';
 import './form.js';
 import './invitation_template.js';
 import './wishlist.js';
+const amountInput = document.getElementById('amountInput');
+
 document.addEventListener('DOMContentLoaded', () => {
 
 
+    const amountButtons = document.querySelectorAll('.amount-btn');
     const venueBackground = document.getElementById('venueBackground');
     if (venueBackground) {
         const images = ['img/venue.png', 'img/venue2.png', 'img/venue3.png'];
@@ -379,8 +382,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             document.querySelectorAll('.send-money-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const amount = btn.getAttribute('data-item-id');
-                    console.log('Send money for item:', amount);
+                    const id = btn.getAttribute('data-item-id');
+                    const amount = btn.getAttribute('data-item-amount');
+                    updateQuery('amount', amount)
+                    updateQuery('id', id)
                     openModalFunc(parseInt(amount))
                 });
             });
@@ -415,6 +420,10 @@ document.addEventListener('DOMContentLoaded', () => {
             cashModal.classList.add('hidden');
             cashModal.classList.remove('flex');
         }, 300);
+        amountButtons.forEach(btn => {
+            btn.classList.remove('bg-maroon', 'text-white');
+        });
+        clearAllQueries()
     }
     function openModalFunc(amount = null){
 
@@ -451,8 +460,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    const amountButtons = document.querySelectorAll('.amount-btn');
-    const amountInput = document.getElementById('amountInput');
 
     if (amountButtons.length > 0 && amountInput) {
         amountButtons.forEach(button => {
@@ -489,5 +496,38 @@ document.addEventListener('DOMContentLoaded', () => {
             wishlistPage.classList.add('hidden');
             giftMain.classList.remove('hidden');
         });
+    }
+    function addQueryParam(key, value) {
+        const url = new URL(window.location.href);
+
+        if (value === null || value === undefined || value === '') {
+            url.searchParams.delete(key);
+        } else {
+            url.searchParams.set(key, value);
+        }
+
+        window.history.replaceState({}, '', url);
+    }
+    function removeQueryParam(key) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete(key);
+        window.history.replaceState({}, '', url);
+    }
+    function getQueryParam(key) {
+        return new URL(window.location.href).searchParams.get(key);
+    }
+    function updateQuery(key, value = null) {
+        const url = new URL(window.location.href);
+
+        value === null
+            ? url.searchParams.delete(key)
+            : url.searchParams.set(key, value);
+
+        window.history.replaceState({}, '', url);
+    }
+    function clearAllQueries() {
+        const url = new URL(window.location.href);
+        url.search = '';
+        window.history.replaceState({}, '', url);
     }
 });

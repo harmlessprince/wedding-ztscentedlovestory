@@ -8,7 +8,12 @@ const fullName = document.getElementById('fullName')
 const phoneNumber = document.getElementById('phoneNumber')
 const product = document.getElementById('product')
 const amountInput = document.getElementById('amountInput')
+function getQueryParam(key) {
+    return new URL(window.location.href).searchParams.get(key);
+}
 paystackButton.addEventListener('click', function () {
+    console.log(fullName.value)
+    console.log(getQueryParam('id'))
     popup.newTransaction({
         key: paystackKey,
         email: email.value,
@@ -17,7 +22,7 @@ paystackButton.addEventListener('click', function () {
         channels: ['card', 'bank', 'ussd', 'mobile_money', 'bank_transfer', 'apple_pay'],
         metadata: {
             "fullName": fullName.value,
-            "item": product?.value ?? "cash",
+            "productId": getQueryParam('id') ?? "cash",
             "phoneNumber": phoneNumber.value,
         },
         onSuccess: (transaction) => {

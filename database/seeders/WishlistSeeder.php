@@ -37,7 +37,7 @@ class WishlistSeeder extends Seeder
                 'status' => true,
             ],
             [
-                'name' => 'Induction cooker',
+                'name' => 'Maxi Induction cooker',
                 'price' => 44000,
                 'buy_online_url' => 'https://fouanistore.com/product/971?maxi-induction-cooker-2100-watts-led-display-wt2103c',
                 'status' => true,
@@ -52,6 +52,12 @@ class WishlistSeeder extends Seeder
                 'name' => 'Maxi Air Cooler Fan',
                 'price' => 209000,
                 'buy_online_url' => 'https://fouanistore.com/product/814?maxi-air-cooler-fan-200w-53l-200-17jr',
+                'status' => true,
+            ],
+            [
+                'name' => 'LG Split AC 1.0 HP ',
+                'price' => 463000,
+                'buy_online_url' => 'https://fouanistore.com/product/402?lg-split-ac-1-0-hp-dual-inverter-advanced-features',
                 'status' => true,
             ],
         ];
