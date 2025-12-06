@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="{{asset('/img/solar_heart-bold-duotone.svg')}}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Your Page Title" />
+    <meta property="og:description" content="Aqid & Walimatul Nikkah - Zuliat & Taofeeq" />
+    <meta property="og:image" content="https://ztscentedlovestory.taoforge.org/" />
+    <meta property="og:url" content="https://res.cloudinary.com/dfyddd3mr/image/upload/v1765056702/wedding_iv_1_yaofsi.jpg" />
+    <meta property="og:type" content="website" />
     <title>Walimatul Nikkah - Zuliat & Taofeeq</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
