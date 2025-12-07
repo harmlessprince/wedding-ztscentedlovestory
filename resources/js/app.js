@@ -424,6 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (amountInput && amount) {
             amountInput.value = amount
+            formattedMoneySpan.textContent = formatPrice(amount)
         }
 
         setTimeout(() => {
