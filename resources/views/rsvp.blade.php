@@ -177,7 +177,7 @@
                         </p>
 
                         <div class="text-center">
-                            <img src="https://res.cloudinary.com/ibreathcode/image/upload/v1764440875/product/ring_gfepe1.svg" alt="ring" style="width: 40px; height: 34px; display: inline-block;">
+                            <img src="{{asset('img/ring.svg')}}" alt="ring" style="width: 40px; height: 34px; display: inline-block;">
                         </div>
 
                         <p class="wedding-invite-playwrite text-center  text-lg text-maroon">
