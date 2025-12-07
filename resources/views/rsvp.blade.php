@@ -24,7 +24,7 @@
         <h1 class="text-maroon text-4xl font-bold text-center mb-8 font-sans">R.S.V.P</h1>
 
         <form id="ticketForm" class="space-y-4">
-
+            <span id="errorMessage" class="text-red-500 text-md flex items-center justify-center"></span>
             <div>
                 <label for="surname" class="text-black text-sm font-medium block mb-2">Surname</label>
                 <input
