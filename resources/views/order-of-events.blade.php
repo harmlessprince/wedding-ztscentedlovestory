@@ -62,7 +62,7 @@
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Introduction of the Couples parents</span>
+                <span>Introduction of the couple's parents</span>
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
