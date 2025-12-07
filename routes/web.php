@@ -64,7 +64,8 @@ Route::get('/venue', function () {
     return view('venue');
 })->name('venue');
 
-Route::get('/payment-success', function () {
+Route::get('/payment-success/{reference}', function ($reference) {
+    \App\Models\Transaction::query()->where('reference', $reference)->first() ?: abort(404);
     $gratitudeMessages = [
         "Thank you so much for your gift!\n" .
         "We deeply appreciate your love and generosity.\n" .

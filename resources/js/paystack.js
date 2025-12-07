@@ -107,7 +107,7 @@ paystackButton.addEventListener('click', async function () {
                     reference: transaction.trxref,
                     amount: transaction.amount,
                 });
-                window.location.replace("/payment-success");
+                window.location.replace(`/payment-success/${reference}`);
             },
             onLoad: (response) => {
                 console.log("onLoad: ", response);
