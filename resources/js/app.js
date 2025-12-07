@@ -2,7 +2,9 @@ import './bootstrap';
 import './form.js';
 import './invitation_template.js';
 import './wishlist.js';
+import {formatPrice} from "./wishlist.js";
 const amountInput = document.getElementById('amountInput');
+const formattedMoneySpan = document.getElementById('formattedMoney');
 const errorMessageDiv = document.getElementById('errorMessage');
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -413,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessageDiv.textContent = ""
     }
     function openModalFunc(amount = null){
-
+        const customAmountButton = document.getElementById('customAmountBtn');
         cashModal.classList.remove('hidden');
         cashModal.classList.add('flex');
 
@@ -427,6 +429,11 @@ document.addEventListener('DOMContentLoaded', () => {
             cashModalContent.classList.remove('translate-y-full');
             cashModalContent.classList.add('translate-y-0');
         }, 10);
+
+        customAmountButton.addEventListener('click', function() {
+            // Focus the input field when the button is clicked
+            amountInput.focus();
+        });
     }
 
     if (cashBtn && cashModal && cashModalContent) {
@@ -460,13 +467,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const amount = button.getAttribute('data-amount');
                 amountInput.value = amount;
+                formattedMoneySpan.textContent = formatPrice(parseInt(amount))
             });
         });
 
         amountInput.addEventListener('input', () => {
             amountButtons.forEach(btn => {
-                btn.classList.remove('bg-maroon', 'text-white');
+                if (btn.id != "customAmountBtn"){
+                    btn.classList.remove('bg-maroon', 'text-white');
+                }
             });
+            formattedMoneySpan.textContent = formatPrice(parseInt(amountInput.value))
         });
     }
 

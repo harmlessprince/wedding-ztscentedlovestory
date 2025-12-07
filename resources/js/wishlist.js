@@ -44,5 +44,9 @@ export const wishlistItems = [
 ];
 
 export function formatPrice(price) {
+    if (!price || isNaN(price)) {
+        price = 0
+        return `₦ ${price.toLocaleString('en-NG')}`
+    }
     return `₦ ${price.toLocaleString('en-NG')}`;
 }
