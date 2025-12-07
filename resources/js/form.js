@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.classList.toggle('opacity-60', disabled);
             submitBtn.classList.toggle('cursor-not-allowed', disabled);
         }
+        errorMessageDiv.textContent = ""
     }
 
     if (ticketForm && formSection && successSection) {
@@ -152,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         codeForm.addEventListener('submit', async (e) => {
             e.preventDefault()
             const code = invitationCodeInput.value.trim();
-            console.log(code)
+            errorMessageDiv.textContent = ""
 
             if (!code) {
                 alert('Please enter your invitation code');
