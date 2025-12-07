@@ -100,7 +100,7 @@ paystackButton.addEventListener('click', async function () {
                     reference: transaction.trxref,
                     amount: transaction.amount,
                 });
-                clearLocalStorageUser('active')
+                clearLocalStorageUser('activeUser')
                 window.location.replace(`/payment-success/${reference}`);
             },
             onLoad: (response) => {
