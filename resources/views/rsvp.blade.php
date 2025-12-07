@@ -164,7 +164,7 @@
 
 
             <div class="bg-[#E5D9D9] w-full p-3 rounded-md">
-                <h2 class="text-gray-800 text-lg font-semibold text-center mb-4">Download your invitation card</h2>
+{{--                <h2 class="text-gray-800 text-lg font-semibold text-center mb-4">Download your invitation card</h2>--}}
 
                 <div class="bg-rose-light p-3 rounded-lg mb-6">
                     <h3 class="text-center text-sm p-1"><span id="invitee_name"></span>, YOU'RE INVITED TO</h3>
@@ -246,13 +246,13 @@
                 </div>
 
                 <!-- Download Button -->
-                <button
-                    id="downloadInviteBtn"
-                    class="w-full max-w-sm bg-[#C9B0B0]  text-maroon py-4 rounded-full text-base"
-                    style="font-family: Poppins, sans-serif;"
-                >
-                    Download Invite
-                </button>
+{{--                <button--}}
+{{--                    id="downloadInviteBtn"--}}
+{{--                    class="w-full max-w-sm bg-[#C9B0B0]  text-maroon py-4 rounded-full text-base"--}}
+{{--                    style="font-family: Poppins, sans-serif;"--}}
+{{--                >--}}
+{{--                    Download Invite--}}
+{{--                </button>--}}
 
 
             </div>
