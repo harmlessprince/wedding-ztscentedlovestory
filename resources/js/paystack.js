@@ -18,6 +18,7 @@ function validatePaymentForm(data) {
     console.log(data)
     if (!data.email.trim()) return 'Email is required';
     if (!/^\S+@\S+\.\S+$/.test(data.email)) return 'Invalid email address';
+    if (data.email.length > 200) return 'Email address is too long';
     if (!data.amount) return 'Amount is required';
     if (data.amount < 50000) return 'Ah ah 😅. Abeg raise am… ₦500 is the minimum';
     return null;
