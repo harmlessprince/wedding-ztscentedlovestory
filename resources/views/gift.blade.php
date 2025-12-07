@@ -94,6 +94,7 @@
                 </button>
             </div>
             <div class="px-6 pb-6 space-y-4 max-h-[55vh] overflow-y-auto">
+                <span id="errorMessage" class="text-red-500 text-md flex items-center justify-center"></span>
                 <div>
                     <label class="text-black text-base font-normal block mb-2">Email address</label>
                     <input type="email" id="email" placeholder="example@gmail.com"
@@ -117,7 +118,7 @@
                 <div>
                     <label class="text-black text-base font-normal block mb-2">Amount</label>
                     <input type="number"  placeholder="Enter the amount you want to gift"
-                           class="w-full px-4 py-3 rounded-md bg-[#E5D9D9] text-gray-800 placeholder-[#949494] focus:outline-none" id="amountInput">
+                           class="w-full px-4 py-3 rounded-md bg-[#E5D9D9] text-gray-800 placeholder-[#949494] focus:outline-none" id="amountInput" min="500">
                 </div>
                 <div class="flex flex-col gap-2 justify-center items-center">
                     <div>

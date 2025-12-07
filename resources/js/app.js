@@ -3,7 +3,7 @@ import './form.js';
 import './invitation_template.js';
 import './wishlist.js';
 const amountInput = document.getElementById('amountInput');
-
+const errorMessageDiv = document.getElementById('errorMessage');
 document.addEventListener('DOMContentLoaded', () => {
 
 
@@ -410,6 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.remove('bg-maroon', 'text-white');
         });
         clearAllQueries()
+        errorMessageDiv.textContent = ""
     }
     function openModalFunc(amount = null){
 

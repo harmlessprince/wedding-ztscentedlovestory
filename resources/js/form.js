@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const groomGuestBtn = document.getElementById('groomGuestBtn');
     const brideGuestBtn = document.getElementById('brideGuestBtn');
     const guestTypeInput = document.getElementById('guestType');
+    const errorMessageDiv = document.getElementById('errorMessage');
     const submitBtn = ticketForm?.querySelector('button[type="submit"]');
 
     // code
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function validateForm(data) {
+    function validateTicketForm(data) {
         if (!data.surname.trim()) return 'Surname is required';
         if (!data.first_name.trim()) return 'First name is required';
         if (!data.phone.trim()) return 'Phone number is required';
@@ -85,9 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
 
-            const error = validateForm(formData);
+            const error = validateTicketForm(formData);
             if (error) {
-                alert(error);
+                // alert(error);
+                errorMessageDiv.textContent = error
                 return;
             }
             const location_url = location.href
@@ -143,7 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    if (codeForm){
+
+    if (codeForm) {
         codeForm.addEventListener('submit', async (e) => {
             e.preventDefault()
             const code = invitationCodeInput.value.trim();
@@ -151,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!code) {
                 alert('Please enter your invitation code');
+                errorMessageDiv.textContent = "Please enter your invitation code"
                 return;
             }
             // ✅ Disable button during request
@@ -169,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const data = await response.json();
                 console.log(data)
-                if (!data.success){
+                if (!data.success) {
                     alert("Invalid invitation code")
                     return
                 }
@@ -180,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 codeFormSection.classList.add('hidden');
                 invitationSection.classList.remove('hidden');
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({top: 0, behavior: 'smooth'});
             } catch (error) {
                 console.error(error);
                 alert('Something went wrong. Please try again.');

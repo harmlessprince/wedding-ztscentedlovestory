@@ -62,7 +62,7 @@
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Introduction of the couple's parents</span>
+                <span>Introduction of the couple's parent</span>
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
@@ -78,7 +78,7 @@
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Khuthbah of the importance of Marriage</span>
+                <span>Khuthbah on the importance of marriage</span>
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
@@ -114,11 +114,11 @@
         <div class="bg-champagne p-6 space-y-3">
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Opening Introduction- Father/Mother of the day</span>
+                <span>Opening introduction- Father/Mother of the day</span>
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Couple Entrance</span>
+                <span>Couple entrance</span>
             </div>
 {{--            <div class="flex items-center gap-3 text-white">--}}
 {{--                <img src="img/ring.svg" alt="" class="w-5 h-5">--}}
@@ -126,7 +126,7 @@
 {{--            </div>--}}
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Father and Daughter Dance</span>
+                <span>Father and Daughter dance</span>
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">

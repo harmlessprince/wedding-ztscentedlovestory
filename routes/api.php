@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PaystackWebhookController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
 use App\Jobs\ProcessInvitationJob;
 use App\Models\Rsvp;
@@ -81,3 +82,7 @@ Route::post(
     '/webhooks/paystack',
     [PaystackWebhookController::class, 'handle']
 )->name('webhooks.paystack');
+
+
+Route::post('transaction/initialize', [TransactionController::class, 'initialize']);
+Route::post('transaction/confirm', [TransactionController::class, 'confirm']);
