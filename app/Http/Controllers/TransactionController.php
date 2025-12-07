@@ -22,10 +22,23 @@ class TransactionController extends Controller
             'meta' => 'nullable|array',
         ]);
 
-        $transaction = Transaction::create([
+
+        $idempotencyKey = $this->generateIdempotencyKey($validated);
+        $existingTransaction = Transaction::query()
+            ->where('idempotency_key', $idempotencyKey)
+            ->first();
+        if ($existingTransaction) {
+            return response()->json([
+                'success' => true,
+                'reference' => $existingTransaction->reference,
+                'data' => $existingTransaction,
+            ]);
+        }
+        $transaction = Transaction::query()->create([
             'reference' => $this->generateReference($validated['type']),
             'wishlist_item_id' => $validated['wishlist_item_id'] ?? null,
             'amount' => $validated['amount'],
+            'idempotency_key' => $idempotencyKey,
             'type' => $validated['type'], // gift | simple
             'status' => 'pending',
             'payer_name' => $validated['payer_name'] ?? null,
@@ -69,4 +82,54 @@ class TransactionController extends Controller
             'success' => true,
         ]);
     }
+
+
+    /**
+     * Generates an idempotency key using SHA-256 hash based on critical transaction data.
+     * The key is consistent for the same input data, ensuring the transaction is only processed once.
+     *
+     * @param array $validatedData The validated request data array.
+     * @return string The generated SHA-256 hash key.
+     */
+    private function generateIdempotencyKey(array $validatedData): string
+    {
+        // 1. Define the critical fields that uniquely identify this transaction attempt.
+        // We exclude 'reference' and 'status' as they are outcomes, not inputs.
+        $criticalFields = [
+            'wishlist_item_id',
+            'amount',
+            'type',
+            'payer_name',
+            'payer_email',
+            'payer_phone',
+        ];
+
+        // 2. Extract only the critical data points.
+        $dataToHash = [];
+        foreach ($criticalFields as $field) {
+            // Use array_key_exists for robust checking, and use the validated data.
+            if (array_key_exists($field, $validatedData)) {
+                $dataToHash[$field] = $validatedData[$field];
+            }
+        }
+
+
+        if (function_exists('auth') && auth()->check()) {
+            $dataToHash['user_id'] = auth()->id();
+        } else {
+            $dataToHash['user_id'] = $validatedData['payer_email'] ?? 'guest';
+        }
+
+
+        // 4. Sort the array alphabetically. This is crucial!
+        // It ensures that the hash is the same regardless of the order of keys in the input array.
+        ksort($dataToHash);
+
+        // 5. Convert the final, sorted array into a consistent JSON string.
+        $jsonString = json_encode($dataToHash);
+
+        // 6. Generate the SHA-256 hash.
+        return hash('sha256', $jsonString);
+    }
+
 }

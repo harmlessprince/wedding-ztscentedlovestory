@@ -73,6 +73,28 @@
             </div>
 
             <div>
+                <label for="children_count" class="text-black text-sm font-medium block mb-2">
+                    Number of Children (Ages 0-14)
+                </label>
+
+                <select
+                    id="children_count"
+                    name="children_count"
+                    class="w-full px-4 py-3 rounded-lg bg-[#E5D9D9] border-none outline-none focus:ring-2 focus:ring-maroon text-black"
+                >
+                    <option value="0">0 Children</option>
+                    <option value="1">1 Child</option>
+                    <option value="2">2 Children</option>
+                    <option value="3">3 Children</option>
+                    <option value="4">4 Children (Maximum)</option>
+                </select>
+
+                <p class="mt-2 text-xs text-gray-600">
+                    Note: Children must be 14 years old or younger. Guests over 14 should be registered as an adult.
+                </p>
+            </div>
+
+            <div>
                 <label for="side" class="text-black text-sm font-medium block mb-2">Are you with the Groom's or Bride's family?</label>
                 <div class="flex gap-2 mb-4">
                     <button

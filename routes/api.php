@@ -18,6 +18,7 @@ Route::post('/get-ticket', function (Request $request) {
         'first_name' => 'required|string',
         'email' => 'required|email',
         'phone' => 'required|string',
+        'children_count' => 'nullable|integer',
         'message' => 'nullable|string',
         'side' => 'required|string|in:GROOM,BRIDE',
     ]);
