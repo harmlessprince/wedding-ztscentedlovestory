@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         amountInput.addEventListener('input', () => {
             amountButtons.forEach(btn => {
-                if (btn.id != "customAmountBtn") {
+                if (btn.id !== "customAmountBtn") {
                     btn.classList.remove('bg-maroon', 'text-white');
                 }
             });

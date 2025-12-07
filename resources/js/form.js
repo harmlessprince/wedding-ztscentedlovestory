@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (error) {
                 // alert(error);
                 errorMessageDiv.textContent = error
+                window.scrollTo({top: 0, behavior: 'smooth'});
                 return;
             }
             const location_url = location.href
@@ -112,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // throw new Error(result.message || 'Submission failed');
                     errorMessageDiv.textContent = result.message || 'Submission failed'
                     setFormDisabled(false);
+                    window.scrollTo({top: 0, behavior: 'smooth'});
                     return
                 }
 
