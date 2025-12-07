@@ -17,7 +17,7 @@ class TransactionController extends Controller
             'currency' => 'nullable|string|max:5',
             'wishlist_item_id' => 'nullable|exists:wishlists,id',
             'payer_name' => 'nullable|string',
-            'payer_email' => 'nullable|email',
+            'payer_email' => 'nullable|email|max:255',
             'payer_phone' => 'nullable|string',
             'meta' => 'nullable|array',
         ]);
