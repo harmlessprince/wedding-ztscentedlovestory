@@ -487,7 +487,7 @@
                           margin: 0;
                         "
                                     >
-                                        Your Invitation Code: {{$data['invite_code']}}
+                                        Your Invitation Code: <b> {{$data['invite_code']}} </b>
                                     </p>
                                 </td>
                             </tr>
