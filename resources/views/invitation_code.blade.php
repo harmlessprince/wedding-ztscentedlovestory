@@ -38,6 +38,7 @@
         </div>
 
         <form id="codeForm" class="space-y-6">
+            <span id="errorMessage" class="text-red-500 text-md flex items-center justify-center"></span>
             <div>
                 <label for="invitationCode" class="text-gray-700 text-sm font-medium block mb-2">Invitation Code</label>
                 <div class="flex justify-between p-2 bg-[#E5D9D9] rounded-lg">
@@ -45,8 +46,7 @@
                         type="text"
                         id="invitationCode"
                         name="invitationCode"
-                        placeholder="Enter Code"
-                        required
+                        placeholder="Enter code or phone number"
                         class="py-2 rounded-lg  outline-none placeholder-gray-400"
                     >
                     <button

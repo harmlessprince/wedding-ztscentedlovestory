@@ -62,7 +62,11 @@
                     </div>
                 </div>
 
-                <a class="w-full bg-rose-light text-maroon py-3 rounded-full font-semibold hover:scale-95 transition" href="https://www.google.com/maps/place/Comfort+Event+Center/@6.4831961,3.041331,1562m/data=!3m2!1e3!4b1!4m6!3m5!1s0x103b7f0583b80a4d:0xfa87e12f9fbfcb28!8m2!3d6.4831961!4d3.0439059!16s%2Fg%2F11f7pt_bdh?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D">
+                <a
+                    target="_blank"
+                    class="flex items-center place-content-center w-full bg-rose-light text-maroon py-3 rounded-full font-semibold hover:scale-95 transition"
+                   href="https://www.google.com/maps/place/Comfort+Event+Center/@6.4831961,3.041331,1562m/data=!3m2!1e3!4b1!4m6!3m5!1s0x103b7f0583b80a4d:0xfa87e12f9fbfcb28!8m2!3d6.4831961!4d3.0439059!16s%2Fg%2F11f7pt_bdh?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D"
+                >
                     View map
                 </a>
             </div>

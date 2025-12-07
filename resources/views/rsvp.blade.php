@@ -32,7 +32,6 @@
                     id="surname"
                     name="surname"
                     placeholder="Enter your surname"
-                    required
                     class="w-full px-4 py-3 rounded-lg bg-[#E5D9D9] border-none outline-none focus:ring-2 focus:ring-maroon placeholder-gray-400"
                 >
             </div>
@@ -44,7 +43,6 @@
                     id="firstname"
                     name="firstname"
                     placeholder="Enter your first name"
-                    required
                     class="w-full px-4 py-3 rounded-lg bg-[#E5D9D9] border-none outline-none focus:ring-2 focus:ring-maroon placeholder-gray-400"
                 >
             </div>
@@ -56,8 +54,8 @@
                     type="tel"
                     id="phone"
                     name="phone"
+                    autocomplete="true"
                     placeholder="Enter your phone number"
-                    required
                     class="w-full px-4 py-3 rounded-lg bg-[#E5D9D9] border-none outline-none focus:ring-2 focus:ring-maroon placeholder-gray-400"
                 >
             </div>
@@ -70,8 +68,6 @@
                     id="email"
                     name="email"
                     placeholder="example@gmail.com"
-                    required
-                    autocomplete="true"
                     class="w-full px-4 py-3 rounded-lg bg-[#E5D9D9] border-none outline-none focus:ring-2 focus:ring-maroon placeholder-gray-400"
                 >
             </div>
