@@ -112,7 +112,7 @@
                 </div>
                 <p class="text-sm text-white font-sans">Ticket admits one guest(person)</p>
             </div>
-
+            <span id="errorMessage" class="text-red-500 text-md flex items-center justify-center"></span>
             <button
                 type="submit"
                 class="w-full bg-maroon text-white py-4 rounded-lg font-semibold hover:bg-maroon/90 transition-colors"
