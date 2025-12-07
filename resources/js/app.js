@@ -401,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (amountInput) {
             amountInput.value = null
+            formattedMoneySpan.textContent = null
         }
 
         cashModalContent.classList.remove('translate-y-0');
