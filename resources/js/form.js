@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.classList.toggle('opacity-60', disabled);
             submitBtn.classList.toggle('cursor-not-allowed', disabled);
         }
-        errorMessageDiv.textContent = ""
     }
 
     if (ticketForm && formSection && successSection) {
@@ -108,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const result = await response.json();
                 console.log(result)
-
+                console.log("Message: ", result.message)
                 if (!result.success) {
                     // throw new Error(result.message || 'Submission failed');
                     errorMessageDiv.textContent = result.message || 'Submission failed'
@@ -175,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 const data = await response.json();
-
                 if (!data.success) {
                     errorMessageDiv.textContent = data.message
                     return
