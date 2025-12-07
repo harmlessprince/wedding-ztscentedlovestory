@@ -138,16 +138,13 @@
 {{--            </div>--}}
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Gift Presentation</span>
+                <span>Groom family speech</span>
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
                 <span>Vote of thanks</span>
             </div>
-            <div class="flex items-center gap-3 text-white">
-                <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Groom family speach</span>
-            </div>
+
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
                 <span>Dance! Dance! Dance!</span>
