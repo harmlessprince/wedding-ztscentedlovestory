@@ -3,7 +3,9 @@ import './form.js';
 import './invitation_template.js';
 import './wishlist.js';
 import {formatPrice} from "./wishlist.js";
+
 const amountInput = document.getElementById('amountInput');
+const customAmountButton = document.getElementById('customAmountBtn');
 const formattedMoneySpan = document.getElementById('formattedMoney');
 const errorMessageDiv = document.getElementById('errorMessage');
 document.addEventListener('DOMContentLoaded', () => {
@@ -193,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
     const downloadInviteBtn = document.getElementById('downloadInviteBtn');
     if (downloadInviteBtn) {
         downloadInviteBtn.addEventListener('click', async () => {
@@ -205,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const src = imgEl.getAttribute('src');
-                const res = await fetch(src, { cache: 'no-cache' });
+                const res = await fetch(src, {cache: 'no-cache'});
                 if (!res.ok) throw new Error('Failed to fetch image');
                 const blob = await res.blob();
                 const url = URL.createObjectURL(blob);
@@ -245,18 +246,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
     if (clearBtn) {
         clearBtn.addEventListener('click', () => {
             invitationCodeInput.value = '';
             invitationSection.classList.add('hidden');
             codeFormSection.classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, behavior: 'smooth'});
         });
     }
 
     function downloadInvitationCard(originalUrl) {
-        if (!originalUrl){
+        if (!originalUrl) {
             alert('Invalid invite code')
             return
         }
@@ -345,27 +345,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!wishlistContainer) return;
 
         try {
-        //     const { wishlistItems, formatPrice } = await import('./wishlist.js');
-        //
-        //     wishlistContainer.innerHTML = '';
-        //
-        //     wishlistItems.forEach(item => {
-        //         const itemCard = document.createElement('div');
-        //         itemCard.className = 'bg-[#E5D9D9] rounded-2xl p-6';
-        //         itemCard.innerHTML = `
-        //   <h3 class="text-gray-800 text-lg font-normal mb-1">${item.name}</h3>
-        //   <p class="text-gray-800 text-2xl font-bold mb-4">${formatPrice(item.price)}</p>
-        //   <div class="flex gap-3">
-        //     <button class="send-money-btn flex-1 bg-[#C9B0B0] text-maroon py-3 rounded-full font-medium hover:opacity-90 transition" data-item-id="${item.id}">
-        //       Send Money
-        //     </button>
-        //     <button class="buy-online-btn flex-1 bg-maroon text-white py-3 rounded-full font-medium hover:opacity-90 transition" data-item-id="${item.id}" data-url="${item.buyOnlineUrl}">
-        //       Buy online
-        //     </button>
-        //   </div>
-        // `;
-        //         wishlistContainer.appendChild(itemCard);
-        //     });
+            //     const { wishlistItems, formatPrice } = await import('./wishlist.js');
+            //
+            //     wishlistContainer.innerHTML = '';
+            //
+            //     wishlistItems.forEach(item => {
+            //         const itemCard = document.createElement('div');
+            //         itemCard.className = 'bg-[#E5D9D9] rounded-2xl p-6';
+            //         itemCard.innerHTML = `
+            //   <h3 class="text-gray-800 text-lg font-normal mb-1">${item.name}</h3>
+            //   <p class="text-gray-800 text-2xl font-bold mb-4">${formatPrice(item.price)}</p>
+            //   <div class="flex gap-3">
+            //     <button class="send-money-btn flex-1 bg-[#C9B0B0] text-maroon py-3 rounded-full font-medium hover:opacity-90 transition" data-item-id="${item.id}">
+            //       Send Money
+            //     </button>
+            //     <button class="buy-online-btn flex-1 bg-maroon text-white py-3 rounded-full font-medium hover:opacity-90 transition" data-item-id="${item.id}" data-url="${item.buyOnlineUrl}">
+            //       Buy online
+            //     </button>
+            //   </div>
+            // `;
+            //         wishlistContainer.appendChild(itemCard);
+            //     });
 
 
             document.querySelectorAll('.send-money-btn').forEach(btn => {
@@ -395,10 +395,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Failed to load wishlist:', error);
         }
     }
-    function closeModalFunc(){
+
+    function closeModalFunc() {
         const amountInput = document.getElementById('amountInput')
 
-        if (amountInput){
+        if (amountInput) {
             amountInput.value = null
         }
 
@@ -414,14 +415,14 @@ document.addEventListener('DOMContentLoaded', () => {
         clearAllQueries()
         errorMessageDiv.textContent = ""
     }
-    function openModalFunc(amount = null){
-        const customAmountButton = document.getElementById('customAmountBtn');
+
+    function openModalFunc(amount = null) {
         cashModal.classList.remove('hidden');
         cashModal.classList.add('flex');
 
         const amountInput = document.getElementById('amountInput')
 
-        if (amountInput && amount){
+        if (amountInput && amount) {
             amountInput.value = amount
         }
 
@@ -430,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cashModalContent.classList.add('translate-y-0');
         }, 10);
 
-        customAmountButton.addEventListener('click', function() {
+        customAmountButton.addEventListener('click', function () {
             // Focus the input field when the button is clicked
             amountInput.focus();
         });
@@ -454,7 +455,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
     if (amountButtons.length > 0 && amountInput) {
         amountButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -473,10 +473,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         amountInput.addEventListener('input', () => {
             amountButtons.forEach(btn => {
-                if (btn.id != "customAmountBtn"){
+                if (btn.id != "customAmountBtn") {
                     btn.classList.remove('bg-maroon', 'text-white');
                 }
             });
+            customAmountButton.setAttribute('data-amount', amountInput.value)
             formattedMoneySpan.textContent = formatPrice(parseInt(amountInput.value))
         });
     }
@@ -495,6 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
             giftMain.classList.remove('hidden');
         });
     }
+
     function addQueryParam(key, value) {
         const url = new URL(window.location.href);
 
@@ -506,14 +508,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.history.replaceState({}, '', url);
     }
+
     function removeQueryParam(key) {
         const url = new URL(window.location.href);
         url.searchParams.delete(key);
         window.history.replaceState({}, '', url);
     }
+
     function getQueryParam(key) {
         return new URL(window.location.href).searchParams.get(key);
     }
+
     function updateQuery(key, value = null) {
         const url = new URL(window.location.href);
 
@@ -523,6 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.history.replaceState({}, '', url);
     }
+
     function clearAllQueries() {
         const url = new URL(window.location.href);
         url.search = '';
