@@ -1,3 +1,5 @@
+import {getLocalStorageUser, setLocalStorageUser} from "./storage.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const ticketForm = document.getElementById('ticketForm');
     const formSection = document.getElementById('formSection');
@@ -79,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = {
                 surname: document.getElementById('surname').value,
                 first_name: document.getElementById('firstname').value,
+                fullName: `${document.getElementById('firstname').value} ${document.getElementById('surname').value}`,
                 phone: document.getElementById('phone').value,
                 email: document.getElementById('email').value,
                 side: guestTypeInput.value,
@@ -93,8 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.scrollTo({top: 0, behavior: 'smooth'});
                 return;
             }
-            const location_url = location.href
-            console.log(location_url)
+            setLocalStorageUser('activeUser', formData)
             setFormDisabled(true);
             try {
                 const response = await fetch(API_ENDPOINT, {
@@ -204,3 +206,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 })
+
+export function prefillForm(){
+    const email = document.getElementById('email')
+    const fullName = document.getElementById('fullName')
+    const phoneNumber = document.getElementById('phoneNumber')
+    const data =  getLocalStorageUser('activeUser')
+    if (!data){
+        return
+    }
+    email.value = data.email;
+    fullName.value = data.fullName;
+    phoneNumber.value = data.phone;
+}
+

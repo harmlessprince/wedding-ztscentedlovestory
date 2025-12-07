@@ -3,6 +3,7 @@ import './form.js';
 import './invitation_template.js';
 import './wishlist.js';
 import {formatPrice} from "./wishlist.js";
+import {prefillForm} from "./form.js";
 
 const amountInput = document.getElementById('amountInput');
 const customAmountButton = document.getElementById('customAmountBtn');
@@ -437,6 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Focus the input field when the button is clicked
             amountInput.focus();
         });
+        prefillForm()
     }
 
     if (cashBtn && cashModal && cashModalContent) {

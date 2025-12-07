@@ -1,4 +1,5 @@
 import Paystack from '@paystack/inline-js';
+import {clearLocalStorageUser} from "./storage.js";
 
 const paystackKey = import.meta.env.VITE_PAYSTACK_KEY;
 const popup = new Paystack()
@@ -99,6 +100,7 @@ paystackButton.addEventListener('click', async function () {
                     reference: transaction.trxref,
                     amount: transaction.amount,
                 });
+                clearLocalStorageUser('active')
                 window.location.replace(`/payment-success/${reference}`);
             },
             onLoad: (response) => {
