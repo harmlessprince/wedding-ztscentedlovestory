@@ -43,7 +43,7 @@ class TransactionController extends Controller
     private function generateReference(string $type): string
     {
         return sprintf(
-            'TXN_%s_%s_%s',
+            'TZ_%s_%s_%s',
             strtoupper($type),
             time(),
             Str::upper(Str::random(4))
