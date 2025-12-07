@@ -62,7 +62,7 @@ Route::post('/get-ticket', function (Request $request) {
 Route::get('/get-ticket/{code}', function (Request $request, $code) {
 
 
-    $rsvp = Rsvp::query()->where('invite_code', $code)->first();
+    $rsvp = Rsvp::query()->where('invite_code', $code)->orWhere('phone', $code)->first();
     if (!$rsvp) {
         return response()->json([
             'success' => false,
