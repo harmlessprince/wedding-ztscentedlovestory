@@ -90,7 +90,7 @@
                 </select>
 
                 <p class="mt-2 text-xs text-gray-600">
-                    Note: Children must be 14 years old or younger. Guests over 14 should be registered as an adult.
+                    Note: Children must be 14 years old or younger. Guests over 14 should get their own invite.
                 </p>
             </div>
 

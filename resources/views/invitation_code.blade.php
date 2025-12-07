@@ -59,6 +59,15 @@
                 </div>
             </div>
 
+            <div>
+                <button
+                    type="submit"
+                    class="w-full bg-maroon text-white py-4 rounded-full font-semibold hover:bg-maroon/90 transition"
+                    id="codeFormButton"
+                >
+                    Proceed
+                </button>
+            </div>
             <div class="space-y-4">
                 <p class="text-gray-600 text-center text-sm">Don't have an invitation code?</p>
                 <a
@@ -69,13 +78,7 @@
                 </a>
             </div>
 
-            <button
-                type="submit"
-                class="w-full bg-maroon text-white py-4 rounded-full font-semibold hover:bg-maroon/90 transition"
-                id="codeFormButton"
-            >
-                Proceed
-            </button>
+
         </form>
     </main>
 
