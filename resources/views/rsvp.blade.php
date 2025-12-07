@@ -259,11 +259,11 @@
 
 
             <a
-                href="/"
+                href="{{route('gift')}}"
                 class="w-full max-w-sm mx-auto  bg-maroon  py-2 mt-20 rounded-lg text-white text-center text-base block"
                 style="font-family: Poppins, sans-serif;"
             >
-                Go to home
+                Gift couple
             </a>
         </div>
 
