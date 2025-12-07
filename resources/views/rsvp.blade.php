@@ -106,7 +106,7 @@
             </div>
 
 
-            <div class="bg-red-600 rounded-xl p-3 flex items-center gap-4">
+            <div class="bg-gray-800 rounded-xl p-3 flex items-center gap-4">
                 <div class="h-8 w-8 border-2 border-white rounded-full flex items-center justify-center">
                     <i class="fa-solid fa-exclamation text-white"></i>
                 </div>
