@@ -117,19 +117,19 @@
 
                 <div>
                     <label class="text-black text-base font-normal block mb-2">Amount</label>
-                    <input type="number"  placeholder="Enter the amount you want to gift"
+                    <input type="number"  placeholder=""
                            class="w-full px-4 py-3 rounded-md bg-[#E5D9D9] text-gray-800 placeholder-[#949494] focus:outline-none" id="amountInput" min="500">
                 </div>
-                <div class="flex flex-col gap-2 justify-center items-center">
-                    <div>
-                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="5000">₦5,000</button>
-                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="10000">₦10,000</button>
-                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="20000">₦20,000</button>
-                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="50000">₦50,000</button>
-                    </div>
-                    <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="100000">₦100,000</button>
+{{--                <div class="flex flex-col gap-2 justify-center items-center">--}}
+{{--                    <div>--}}
+{{--                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="5000">₦5,000</button>--}}
+{{--                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="10000">₦10,000</button>--}}
+{{--                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="20000">₦20,000</button>--}}
+{{--                        <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="50000">₦50,000</button>--}}
+{{--                    </div>--}}
+{{--                    <button type="button" class="amount-btn px-2 py-2 border border-maroon text-sm rounded hover:bg-maroon hover:text-white transition" data-amount="100000">₦100,000</button>--}}
 
-                </div>
+{{--                </div>--}}
                 <button
                     id="paystackButton"
                     class="w-full bg-maroon text-white py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 mt-2 hover:opacity-90 transition">

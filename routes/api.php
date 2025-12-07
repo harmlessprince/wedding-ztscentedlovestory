@@ -22,7 +22,7 @@ Route::post('/get-ticket', function (Request $request) {
         'side' => 'required|string|in:GROOM,BRIDE',
     ]);
 
-    $rsvp = Rsvp::query()->where('hash', $validated['phone'])->first();
+    $rsvp = Rsvp::query()->where('phone', $validated['phone'])->first();
     if ($rsvp) {
         return response()->json([
             'success' => false,

@@ -108,21 +108,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
                 console.log(result)
 
-                if (!response.ok || !result.success) {
-                    throw new Error(result.message || 'Submission failed');
+                if (!result.success) {
+                    // throw new Error(result.message || 'Submission failed');
+                    errorMessageDiv.textContent = result.message || 'Submission failed'
+                    setFormDisabled(false);
+                    return
                 }
 
                 // ✅ Populate success data from backend
                 const invitationCodeEl = document.getElementById('invitation-code');
                 if (invitationCodeEl) {
                     invitationCodeEl.textContent = result.invitation_code;
-
-                    const copyBtn = invitationCodeEl
-                        .closest('.invitation-wrapper')
-                        ?.querySelector('.copy-btn');
-
-                    if (copyBtn) {
-                        copyBtn.setAttribute('data-copy', result.invitation_code);
+                    const codeButtonEl = document.getElementById('codeButton')
+                    // const copyBtn = invitationCodeEl
+                    //     .closest('.invitation-wrapper')
+                    //     ?.querySelector('.copy-btn');
+                    // console.log(copyBtn)
+                    if (codeButtonEl) {
+                        codeButtonEl.setAttribute('data-copy', result.invitation_code);
                     }
                 }
 
@@ -137,8 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.scrollTo({top: 0, behavior: 'smooth'});
 
             } catch (err) {
-                alert(err.message);
-                console.log(err.message)
+                errorMessageDiv.textContent = "An error occurred! Please try again later"
                 setFormDisabled(false);
             }
         });
@@ -172,9 +174,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 const data = await response.json();
-                console.log(data)
+
                 if (!data.success) {
-                    alert("Invalid invitation code")
+                    errorMessageDiv.textContent = data.message
+                    return
+                }
+                if (!data.invite_card_url) {
+                    errorMessageDiv.textContent = "We are still working on you IV, please check again later"
                     return
                 }
                 displayedCode.textContent = data.invitation_code;
@@ -187,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.scrollTo({top: 0, behavior: 'smooth'});
             } catch (error) {
                 console.error(error);
-                alert('Something went wrong. Please try again.');
+                errorMessageDiv.textContent = "Something went wrong. Please try again later"
             } finally {
                 // ✅ Always re-enable button
                 codeFormButton.disabled = false;

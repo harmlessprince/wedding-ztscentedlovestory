@@ -475,7 +475,22 @@
                                     </p>
                                 </td>
                             </tr>
-
+                            <tr>
+                                <td style="padding: 30px 20px 0px 20px">
+                                    <p
+                                        style="
+                          font-family: Poppins, 'Helvetica Neue', Helvetica,
+                            sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          color: #333333;
+                          margin: 0;
+                        "
+                                    >
+                                        Your Invitation Code: {{$data['invite_code']}}
+                                    </p>
+                                </td>
+                            </tr>
                             <!-- Event Details Header -->
                             <tr>
                                 <td style="padding: 30px 20px 0px 20px">
