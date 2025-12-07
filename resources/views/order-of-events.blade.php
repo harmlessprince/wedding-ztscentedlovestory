@@ -42,7 +42,7 @@
             <div class="flex justify-between items-center mb-2">
                 <img src="img/face-left.svg" alt="" class="w-12 h-12">
                 <div>
-                    <h2 class="text-maroon text-2xl font-bold">Nikkah</h2>
+                    <h2 class="text-maroon text-2xl font-bold">Nikah</h2>
                     <p class="text-maroon">12:00pm-1:30pm</p>
 
                 </div>

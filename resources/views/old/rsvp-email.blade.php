@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Invitation — Aqid & Walimatul Nikkahi</title>
+    <title>Invitation — Aqid & Walimatun Nikahi</title>
     <style>
         /* Simple, minimal inline styles for broad email client support */
         body {
@@ -38,7 +38,7 @@
 
                         <p class="heading">Dear {{$data['first_name']}},</p>
 
-                        <p class="sub">We are truly honored to have you confirm your presence at our <strong>Aqid and Walimatul Nikkahi</strong>. Your presence means a lot to us, and we can’t wait to share this blessed moment of love, faith, and togetherness with you.</p>
+                        <p class="sub">We are truly honored to have you confirm your presence at our <strong>Aqid and Walimatun Nikahi</strong>. Your presence means a lot to us, and we can’t wait to share this blessed moment of love, faith, and togetherness with you.</p>
 
                         <p class="sub">Please join us as we celebrate our <strong>ZTscentedlovestory</strong>, a union filled with serenity, gratitude, and the fragrance of barakah (blessing).</p>
 

@@ -4,14 +4,14 @@
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="{{asset('/img/solar_heart-bold-duotone.svg')}}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta property="og:title" content="Aqid & Walimatul Nikkah - Zuliat & Taofeeq"/>
-    <meta property="og:description" content="We are truly honored to have you confirm your presence at our Aqid and Walimatul Nikkah.
+    <meta property="og:title" content="Aqid & Walimatun Nikah - Zuliat & Taofeeq"/>
+    <meta property="og:description" content="We are truly honored to have you confirm your presence at our Aqid and Walimatun Nikah.
 Your presence means a lot to us, and we can’t wait to share this blessed moment of love, faith, and togetherness with you."/>
     <meta property="og:image" content="https://ztscentedlovestory.taoforge.org/"/>
     <meta property="og:url"
           content="https://res.cloudinary.com/dfyddd3mr/image/upload/v1765056702/wedding_iv_1_yaofsi.jpg"/>
     <meta property="og:type" content="website"/>
-    <title>Walimatul Nikkah - Zuliat & Taofeeq</title>
+    <title>Walimatun Nikah - Zuliat & Taofeeq</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
           integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -52,7 +52,7 @@ Your presence means a lot to us, and we can’t wait to share this blessed momen
                 <p class="text-gray-700 text-sm mb-6 ">(Mr. & Mrs.) Adewuyi Invite you to the</p>
             </div>
 
-            <h1 class="text-4xl font-bold mb-4">Walimatul Nikkah</h1>
+            <h1 class="text-4xl font-bold mb-4">Walimatun Nikah</h1>
             <p class="text-2xl mb-3 font-bold">& Engagement Of</p>
 
             <div>

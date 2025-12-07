@@ -16,7 +16,7 @@
         name="format-detection"
         content="telephone=no,address=no,email=no,date=no,url=no"
     />
-    <title>Wedding Invitation - Aqid & Walimatul Nikkah</title>
+    <title>Wedding Invitation - Aqid & Walimatun Nikah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
@@ -253,7 +253,7 @@
                           text-align: center;
                         "
                                     >
-                                        Aqid & Walimatul Nikkah
+                                        Aqid & Walimatun Nikah
                                     </p>
                                 </td>
                             </tr>
@@ -439,7 +439,7 @@
                         "
                                     >
                                         We are truly honored to have you confirm your presence
-                                        at our <strong> Aqid and Walimatul Nikkah </strong>. <br/>
+                                        at our <strong> Aqid and Walimatun Nikah </strong>. <br/>
                                     </p>
                                     <p
                                         class="body-text"

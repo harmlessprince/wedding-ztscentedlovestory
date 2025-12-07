@@ -120,7 +120,7 @@ export function generateInvitationHTML(inviteeName = 'GUEST') {
                     text-align: center;
                   "
                 >
-                  Aqid & Walimatul Nikkah
+                  Aqid & Walimatun Nikah
                 </p>
               </td>
             </tr>
@@ -332,7 +332,7 @@ export function generateInvitationHTML(inviteeName = 'GUEST') {
                     text-align: center;
                   "
                 >
-                  Aqid & Walimatul Nikkah
+                  Aqid & Walimatun Nikah
                 </p>
               </td>
             </tr>

@@ -20,7 +20,7 @@
                 <p class="text-gray-700 text-sm mb-6 ">(Mr. & Mrs.) Adewuyi Invites you to the</p>
             </div>
 
-            <h1 class="text-4xl font-bold mb-4">Walimatul Nikkah</h1>
+            <h1 class="text-4xl font-bold mb-4">Walimatun Nikah</h1>
             <p class="text-2xl mb-3 font-bold">& Engagement Of</p>
 
             <div>
