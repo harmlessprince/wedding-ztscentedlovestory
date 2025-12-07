@@ -62,7 +62,7 @@
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Introduction of the Couple parents</span>
+                <span>Introduction of the Couples parents</span>
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
@@ -86,11 +86,15 @@
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Sign marriage certificate</span>
+                <span>Signing of marriage certificate</span>
             </div>
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
-                <span>Advice to the couple/Prayer</span>
+                <span>Advice to the couple</span>
+            </div>
+            <div class="flex items-center gap-3 text-white">
+                <img src="img/ring.svg" alt="" class="w-5 h-5">
+                <span>Closing prayer</span>
             </div>
         </div>
     </section>
