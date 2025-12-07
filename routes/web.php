@@ -33,6 +33,8 @@ Route::get('/rsvp', function () {
 Route::get('/invitation', function () {
     return view('rsvp-email-original')->with(['data' => [
         'first_name' => "john",
+        'invite_code' => "JOHN-1111",
+        'invite_card_url' => "https://res.cloudinary.com/dfyddd3mr/image/upload/v1765125387/invitations/Taofeeq-invite-20251207-163615.png.png",
     ]]);
 })->name('invitation');
 

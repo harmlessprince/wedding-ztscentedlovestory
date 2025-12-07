@@ -146,19 +146,30 @@
                         class="header-text"
                         style="
                   text-align: center;
-                  color: #213049;
-                  font-size: 14px;
-                  font-weight: 500;
-                  letter-spacing: 1.5px;
-                  padding: 30px 20px 0px;
-                  font-family: Poppins, 'Helvetica Neue', Helvetica, sans-serif;
+                  color: #ffffff;
+                   width: 600px;
+                   height: 20px;
                 "
                     >
-                        {{strtoupper($data['first_name'])}}, YOU'RE INVITED TO
+
                     </td>
                 </tr>
-
                 <tr>
+                    <td
+                        style="
+                  background-image: url({{$data['invite_card_url']}});
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  background-size: cover;
+                  width: 600px;
+                  height: 400px;
+                  "
+                    >
+
+                    </td>
+                </tr>
+                <tr>
+
                     <td
                         align="center"
                         bgcolor="#ffffff"
@@ -168,6 +179,7 @@
                   background-position: center;
                   background-size: cover;
                   padding: 35px 30px;
+                  display: none;
                 "
                         background="https://res.cloudinary.com/ibreathcode/image/upload/v1764440874/product/bg-envelope_qoccre.png"
                     >
