@@ -73,7 +73,7 @@
             </div>
 
             <div>
-                <label for="side" class="text-black text-sm font-medium block mb-2">Are you with the Groom or Bride?</label>
+                <label for="side" class="text-black text-sm font-medium block mb-2">Are you with the Groom's or Bride's family?</label>
                 <div class="flex gap-2 mb-4">
                     <button
                         type="button"
