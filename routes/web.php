@@ -64,3 +64,19 @@ Route::get('/venue', function () {
     return view('venue');
 })->name('venue');
 
+Route::get('/payment-success', function () {
+    $gratitudeMessages = [
+        "Thank you so much for your gift!\n" .
+        "We deeply appreciate your love and generosity.\n" .
+        "May God bless you richly, replenish you, and meet you at every point of your need. ❤️",
+        "Thank you for your thoughtful gift.\n" .
+        "Your generosity has added joy to our special journey.\n" .
+        "We are grateful, and we pray that abundance never departs from your home. ✨💍"
+    ];
+    $randomIndex = array_rand($gratitudeMessages);
+    $randomMessage = $gratitudeMessages[$randomIndex];
+    return view('success')->with([
+        'message' => $randomMessage,
+    ]);
+})->name('success');
+

@@ -1,13 +1,25 @@
 <!doctype html>
 <html lang="en">
-@section('title', 'R.S.V.P Confirmation')
-@include('partials.head')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get ticket - Walimatun Nikah</title>
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
+    <link rel="icon" type="image/svg+xml" href="{{asset('/img/solar_heart-bold-duotone.svg')}}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+CZ:wght@100..400&family=Poppins:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
 <body class="bg-rose-light font-sans">
 
-<div class="max-w-md mx-auto bg-rose-light min-h-screen px-4">
+<div class="max-w-md mx-auto px-3 bg-rose-light min-h-screen pt-14 pb-24">
 
     @include('partials.header')
-    <main id="successSection" class="pt-32 pb-12">
+
+    <main id="successSection" class="pt-20 pb-12 w-full">
 
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div class="confetti-piece" style="left: 5%; animation-delay: 0s;"></div>
@@ -31,32 +43,27 @@
             <div class="confetti-piece" style="left: 95%; animation-delay: 1.1s;"></div>
         </div>
 
-        <div class="flex flex-col items-center justify-center min-h-[70vh]">
+        <div class="flex flex-col items-center px-4 relative z-10">
 
-            <div class="relative z-10 mb-8">
-                <div class="w-24 h-24 rounded-full border-3 border-[#00A91B] flex items-center justify-center mx-auto shadow-lg">
-                    <i class="fa-solid fa-check text-2xl text-[#00A91B]"></i>
+            <div class="mb-6">
+                <div class="w-20 h-20 rounded-full border-4 border-[#00A91B] flex items-center justify-center mx-auto">
+                    <svg class="w-10 h-10 text-[#00A91B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                 </div>
             </div>
 
-            <h1 class="text-black text-4xl font-bold text-center mb-4 relative z-10 font-sans">Successful</h1>
-            <p class="text-[#656565] text-center mb-12 px-6 relative z-10">
-                Thank you, your invitation card has been sent to your mail
+            <h1 class="text-gray-800 text-3xl font-bold text-center mb-3">Successful</h1>
+            <p class="text-gray-600 text-center mb-8 text-sm px-4">
+                {{$message}}
             </p>
 
-            <div class="bg-[#E5D9D9] rounded-2xl p-8 text-center mb-8 w-full max-w-sm relative z-10 shadow-lg flex flex-col items-center">
-                <p class="text-black text-lg font-semibold">Gift couple</p>
-
-                <div class="">
-                    <img src="{{asset('/img/gift.svg')}}" alt="Gift couple">
-                </div>
-
-            </div>
             <a
-                href="/"
-                class="w-full max-w-sm bg-maroon text-white py-4 rounded-lg font-semibold hover:bg-maroon/90 transition-colors text-center block relative z-10"
+                href="{{route('home')}}"
+                class="w-full max-w-sm mx-auto  bg-maroon  py-2 mt-20 rounded-lg text-white text-center text-base block"
+                style="font-family: Poppins, sans-serif;"
             >
-                Go to home
+                Go Home
             </a>
         </div>
 

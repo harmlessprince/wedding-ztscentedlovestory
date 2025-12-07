@@ -9,7 +9,14 @@ const phoneNumber = document.getElementById('phoneNumber')
 const product = document.getElementById('product')
 const errorMessageDiv = document.getElementById('errorMessage')
 const amountInput = document.getElementById('amountInput')
-
+const greetingMessages = [
+    "Thank you so much for your gift!\n" +
+    "We deeply appreciate your love and generosity.\n" +
+    "May God bless you richly, replenish you, and meet you at every point of your need. ❤️",
+    "Thank you for your thoughtful gift.\n" +
+    "Your generosity has added joy to our special journey.\n" +
+    "We are grateful, and we pray that abundance never departs from your home. ✨💍"
+]
 function getQueryParam(key) {
     return new URL(window.location.href).searchParams.get(key);
 }
@@ -100,7 +107,7 @@ paystackButton.addEventListener('click', async function () {
                     reference: transaction.trxref,
                     amount: transaction.amount,
                 });
-                alert('✅ Payment successful. God bless you!');
+                window.location.replace("/payment-success");
             },
             onLoad: (response) => {
                 console.log("onLoad: ", response);
