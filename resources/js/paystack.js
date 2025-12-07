@@ -72,7 +72,7 @@ paystackButton.addEventListener('click', async function () {
             return;
         }
         const initResponse = await initializeTransaction({
-            amount: formData.amount,
+            amount: formData.amount / 100,
             type: getQueryParam('id') ? 'gift': 'cash',
             wishlist_item_id: getQueryParam('id') ?? null,
             payer_name: fullName.value,
