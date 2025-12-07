@@ -97,12 +97,12 @@ Your presence means a lot to us, and we can’t wait to share this blessed momen
         <div class="grid grid-cols-2 gap-4">
             <div
                 class="bg-[#AC9A59] rounded-2xl overflow-hidden h-48 flex flex-col justify-end p-6 text-center relative">
-                <h3 class="text-white text-xl font-bold mb-2 absolute top-2 left-2 font-sans">Groom's Family</h3>
+                <h3 class="text-white text-xl font-bold mb-2 absolute top-2 left-2 font-sans">Groom's Guest</h3>
                 <p class="text-white text-sm absolute bottom-2 right-2">Champagne</p>
             </div>
 
             <div class="bg-maroon rounded-2xl overflow-hidden h-48 flex flex-col justify-end p-6 text-center relative">
-                <h3 class="text-white text-xl font-bold mb-2 absolute top-2 left-2 font-sans">Bride's Family</h3>
+                <h3 class="text-white text-xl font-bold mb-2 absolute top-2 left-2 font-sans">Bride's Guest</h3>
                 <p class="text-white text-sm absolute bottom-2 right-2">Maroon</p>
             </div>
         </div>
