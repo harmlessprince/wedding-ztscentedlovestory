@@ -110,7 +110,7 @@
                 <img src="img/face-right.svg" alt="" class="w-12 h-12">
             </div>
         </div>
-        <div class="bg-champagne p-6 space-y-3">
+        <div class="bg-[#AC9A59] p-6 space-y-3">
             <div class="flex items-center gap-3 text-white">
                 <img src="img/ring.svg" alt="" class="w-5 h-5">
                 <span>Opening introduction- Father/Mother of the day</span>
