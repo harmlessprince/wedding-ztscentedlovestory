@@ -191,11 +191,11 @@
             </div>
 
             <h1 class="text-gray-800 text-3xl font-bold text-center mb-3">Successful</h1>
-            <p class="text-gray-600 text-center mb-8 text-lg px-4">
+            <p class="text-gray-600 text-center text-lg px-4 mb-3">
                 Thank you! Your reservation has been confirmed and your invitation card will be sent to your email shortly.
             </p>
 
-            <p class="mb-2 text-sm text-gray-600 text-center">
+            <p class="text-sm text-gray-600 text-center mb-8 ">
                 Note: Please copy the invitation code below. This unique code is required to validate your invitation card and can also be used later if you need to download your card again.
             </p>
 
