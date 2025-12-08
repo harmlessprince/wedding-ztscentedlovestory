@@ -8,6 +8,7 @@ use App\Models\Rsvp;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
 
 
 Route::post('/get-ticket', function (Request $request) {
@@ -20,9 +21,20 @@ Route::post('/get-ticket', function (Request $request) {
         'phone' => 'required|string',
         'children_count' => 'nullable|integer',
         'message' => 'nullable|string',
+        'captcha' => 'nullable|string',
         'side' => 'required|string|in:GROOM,BRIDE',
     ]);
 
+
+    $captcha = $validated['captcha'];
+    $score = RecaptchaV3::verify($captcha, 'register');
+    if ($score < 0.7) {
+        return response()->json([
+            'success' => false,
+            'message' => 'You are most likely a bot',
+        ]);
+    }
+    unset($validated['captcha']);
     $rsvp = Rsvp::query()->where('phone', $validated['phone'])->first();
     if ($rsvp) {
         return response()->json([

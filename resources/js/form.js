@@ -1,6 +1,13 @@
 import {getLocalStorageUser, setLocalStorageUser} from "./storage.js";
 
 document.addEventListener('DOMContentLoaded', () => {
+    let G_RECAPTCHA_VALUE = null
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LfT4SQsAAAAAP2tEgLNNfSzJLepxlTOz7TvLvEK', {action: 'register'}).then(function(token) {
+            G_RECAPTCHA_VALUE = token;
+        });
+    });
+
     const ticketForm = document.getElementById('ticketForm');
     const formSection = document.getElementById('formSection');
     const successSection = document.getElementById('successSection');
@@ -85,7 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 phone: document.getElementById('phone').value,
                 email: document.getElementById('email').value,
                 side: guestTypeInput.value,
-                message: document.getElementById('message').value
+                message: document.getElementById('message').value,
+                captcha: G_RECAPTCHA_VALUE
             };
 
 

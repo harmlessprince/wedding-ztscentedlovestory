@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Playwrite+CZ:wght@100..400&family=Poppins:ital,wght@0,400;0,500;0,600;1,400&display=swap"
         rel="stylesheet">
     <!-- Google tag (gtag.js) -->
+    {!! RecaptchaV3::initJs() !!}
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LSTY7F560"></script>
     <script>
         window.dataLayer = window.dataLayer || [];

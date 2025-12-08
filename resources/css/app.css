@@ -82,3 +82,5 @@ html, body {
 .wedding-invite-playwrite {
     font-family: 'Playwrite CZ', cursive, Georgia, 'Times New Roman', serif;
 }
+
+/*.grecaptcha-badge { visibility: hidden !important; }*/

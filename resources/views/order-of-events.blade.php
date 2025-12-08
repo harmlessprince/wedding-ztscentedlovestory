@@ -6,6 +6,7 @@
     <link rel="icon" type="image/svg+xml" href="{{asset('/img/solar_heart-bold-duotone.svg')}}"/>
     <title>Wedding - Order of Event</title>
     <!-- Google tag (gtag.js) -->
+    {!! RecaptchaV3::initJs() !!}
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LSTY7F560"></script>
     <script>
         window.dataLayer = window.dataLayer || [];

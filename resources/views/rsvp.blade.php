@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get ticket - Walimatun Nikah</title>
+    {!! RecaptchaV3::initJs() !!}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LSTY7F560"></script>
     <script>
@@ -150,6 +151,7 @@
             >
                 Submit
             </button>
+            {!! RecaptchaV3::field('register') !!}
         </form>
     </main>
 
@@ -189,12 +191,15 @@
             </div>
 
             <h1 class="text-gray-800 text-3xl font-bold text-center mb-3">Successful</h1>
-            <p class="text-gray-600 text-center mb-8 text-sm px-4">
-                Thank you! Your invitation card will be sent to your email.
+            <p class="text-gray-600 text-center mb-8 text-lg px-4">
+                Thank you! Your reservation has been confirmed and your invitation card will be sent to your email shortly.
             </p>
 
+            <p class="mb-2 text-sm text-gray-600 text-center">
+                Note: Please copy the invitation code below. This unique code is required to validate your invitation card and can also be used later if you need to download your card again.
+            </p>
 
-            <div class="bg-[#E5D9D9] w-full p-3 rounded-md">
+            <div class="bg-[#E5D9D9] w-full p-3 rounded-md ">
 {{--                <h2 class="text-gray-800 text-lg font-semibold text-center mb-4">Download your invitation card</h2>--}}
 
                 <div class="bg-rose-light p-3 rounded-lg mb-6">

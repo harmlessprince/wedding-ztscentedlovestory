@@ -17,6 +17,7 @@ Your presence means a lot to us, and we can’t wait to share this blessed momen
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LSTY7F560"></script>
+    {!! RecaptchaV3::initJs() !!}
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
