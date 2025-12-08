@@ -83,4 +83,4 @@ html, body {
     font-family: 'Playwrite CZ', cursive, Georgia, 'Times New Roman', serif;
 }
 
-/*.grecaptcha-badge { visibility: hidden !important; }*/
+.grecaptcha-badge { visibility: hidden !important; }
