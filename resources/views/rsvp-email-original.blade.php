@@ -24,7 +24,8 @@
         rel="stylesheet"
     />
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet"/>
-
+    <!-- Google Tag Manager -->
+    <!-- End Google Tag Manager -->
     <!--[if mso]>
     <noscript>
         <xml>

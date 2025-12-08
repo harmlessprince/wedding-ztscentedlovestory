@@ -21,6 +21,8 @@
         href="https://fonts.googleapis.com/css2?family=Playwrite+CZ:wght@100..400&display=swap"
         rel="stylesheet"
     />
+    <!-- Google Tag Manager -->
+    <!-- End Google Tag Manager -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
