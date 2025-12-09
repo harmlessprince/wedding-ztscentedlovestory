@@ -9,6 +9,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Spatie\IcalendarGenerator\Components\Calendar;
+use Spatie\IcalendarGenerator\Components\Event;
 
 class ContactMail extends Mailable
 {
@@ -53,10 +55,60 @@ class ContactMail extends Mailable
      */
     public function attachments(): array
     {
-
-        return $this->data['invite_card_url'] ? [
+        $attachments = $this->data['invite_card_url'] ? [
             Attachment::fromUrl($this->data['invite_card_url'])
                 ->as('Wedding-Invitation.png')
+                ->withMime('image/png') // Good practice to specify MIME type
         ] : [];
+
+        // --- 1. Generate the ICS attachment ---
+        $icsAttachment = $this->generateIcsAttachment();
+        if ($icsAttachment) {
+            $attachments[] = $icsAttachment;
+        }
+
+        return $attachments;
+    }
+
+    protected function generateIcsAttachment(): ?Attachment
+    {
+
+        // Convert data strings to DateTime objects (required by the package)
+        $startDate = new \DateTime('2026-02-07 09:00:00');
+        $endDate = new \DateTime('2026-02-07 17:00:00');
+        $title = 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade';
+        $description = sprintf("
+                        We are truly honored to have you confirm your presence at our Aqid and Walimatun Nikah .
+                        Your presence means a lot to us, and we can't wait to share this blessed moment of love, faith, and togetherness with you.
+                        Please join us as we celebrate our ZTscentedlovestory , a union filled with serenity, gratitude, and the fragrance of barakah (blessing).
+                        Your Invitation Code: %s
+
+                        Event Details:
+
+                        • Date: Feb 7, 2026
+                        • Location: Comfort Event Center, Olorunleke bus stop, Lagos, Badagry Expressway.
+                        • Time: 10:00am
+                        • Dress Code: Modest
+                    ", $this->data['invite_code']);
+        $location = 'Comfort Event Center, Olorunleke bus stop, Lagos, Badagry Expressway.';
+
+        // 2. Create the Event object
+        $event = Event::create($title)
+            ->startsAt($startDate)
+            ->endsAt($endDate)
+            ->description($description)
+            ->address($location);
+
+        // 3. Create the Calendar object and add the event
+        $calendar = Calendar::create('Taofeeq Olamilekan & Zuliat Ololade') // Calendar Name/Organizer
+        ->refreshInterval(5)
+            ->event($event);
+
+        // 4. Get the raw ICS content (string)
+        $icsContent = $calendar->get();
+
+        // 5. Return a raw data attachment (not from a file)
+        return Attachment::fromData(fn() => $icsContent, 'ztscentedlovestory.ics')
+            ->withMime('text/calendar');
     }
 }
