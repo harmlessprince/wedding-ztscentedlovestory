@@ -78,18 +78,22 @@ class ContactMail extends Mailable
         $endDate = new \DateTime('2026-02-07 18:00:00', $nigeriaTimezone);
         $title = 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade';
         $description = sprintf("
-                        We are truly honored to have you confirm your presence at our Aqid and Walimatun Nikah .
-                        Your presence means a lot to us, and we can't wait to share this blessed moment of love, faith, and togetherness with you.
-                        Please join us as we celebrate our ZTscentedlovestory , a union filled with serenity, gratitude, and the fragrance of barakah (blessing).
-                        Your Invitation Code: %s
+        We are truly honored to have you confirm your presence at our Aqid and Walimatun Nikah .
+        Your presence means a lot to us, and we can't wait to share this blessed moment of love, faith, and togetherness with you.
+        Please join us as we celebrate our ZTscentedlovestory , a union filled with serenity, gratitude, and the fragrance of barakah (blessing).
 
-                        Event Details:
+        Your Invitation Code: %s
 
-                        • Date: Feb 7, 2026
-                        • Location: Comfort Event Center, Olorunleke bus stop, Lagos, Badagry Expressway.
-                        • Time: 10:00am
-                        • Dress Code: Modest
-                    ", $this->data['invite_code']);
+
+
+        Event Details:
+        * Date: Feb 7, 2026
+        * Location: Comfort Event Center, Olorunleke bus stop, Lagos, Badagry Expressway.
+        * Time: 10:00am
+        * Dress Code: Modest
+        * Location: Comfort Event Center, Olorunleke bus stop, Lagos, Badagry Expressway.
+      ", $this->data['invite_code']);
+
         $location = 'Comfort Event Center, Olorunleke bus stop, Lagos, Badagry Expressway.';
 
         // 2. Create the Event object
