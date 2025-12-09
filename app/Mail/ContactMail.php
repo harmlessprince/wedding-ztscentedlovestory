@@ -72,10 +72,10 @@ class ContactMail extends Mailable
 
     protected function generateIcsAttachment(): ?Attachment
     {
-
+        $nigeriaTimezone = new \DateTimeZone('Africa/Lagos');
         // Convert data strings to DateTime objects (required by the package)
-        $startDate = new \DateTime('2026-02-07 09:00:00');
-        $endDate = new \DateTime('2026-02-07 17:00:00');
+        $startDate = new \DateTime('2026-02-07 10:00:00', $nigeriaTimezone);
+        $endDate = new \DateTime('2026-02-07 18:00:00', $nigeriaTimezone);
         $title = 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade';
         $description = sprintf("
                         We are truly honored to have you confirm your presence at our Aqid and Walimatun Nikah .
