@@ -28,10 +28,10 @@ Route::post('/get-ticket', function (Request $request) {
 
     $captcha = $validated['captcha'];
     $score = RecaptchaV3::verify($captcha, 'register');
-    if ($score < 0.7) {
+    if ($score < 0.5) {
         return response()->json([
             'success' => false,
-            'message' => 'You are most likely a bot',
+            'message' => 'You are most likely a bot, kindly refresh the page and try again.',
         ]);
     }
     unset($validated['captcha']);
