@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use App\Services\WishlistService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -40,32 +41,27 @@ class PaystackWebhookController extends Controller
         $phoneNumber = $data['metadata']['phoneNumber'] ?? null;
         $fullName = $data['metadata']['fullName'] ?? null;
 
-        if (!$itemId || !$phoneNumber) {
-            Log::error('Missing metadata in Paystack webhook', $payload);
-            return response()->json(['message' => 'Invalid payload'], 400);
+
+        if ($itemId){
+            // ✅ Mark wishlist item as purchased
+            $this->wishlistService->markAsPurchased(
+                (int) $itemId,
+                (string) "{$fullName} || {$phoneNumber}",
+                $data
+            );
+        }else{
+            Log::error('Missing productId in Paystack webhook', $payload);
+        }
+        $status = $data['status'] ?? null;
+        if ($status){
+            Transaction::query()->where('reference', $data['reference'])->update([
+                'meta' => $data,
+                'status' => $status,
+            ]);
+        }else{
+            Log::error('Missing transaction status in Paystack webhook', $payload);
         }
 
-        // ✅ Mark wishlist item as purchased
-        $this->wishlistService->markAsPurchased(
-            (int) $itemId,
-            (string) "{$fullName} || {$phoneNumber}",
-            [
-                'gateway' => 'paystack',
-                'reference' => $data['reference'],
-                'transaction_id' => $data['id'],
-                'status' => $data['status'],
-                'amount' => $data['amount'] / 100, // Kobo → Naira
-                'currency' => $data['currency'],
-                'paid_at' => $data['paid_at'],
-                'channel' => $data['channel'],
-                'authorization' => $data['authorization'] ?? null,
-                'customer' => [
-                    'email' => $data['customer']['email'] ?? null,
-                    'code' => $data['customer']['customer_code'] ?? null,
-                ],
-                'raw' => $data,
-            ]
-        );
 
         return response()->json(['message' => 'Processed'], 200);
     }
