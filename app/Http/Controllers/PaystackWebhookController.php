@@ -20,10 +20,10 @@ class PaystackWebhookController extends Controller
     public function handle(Request $request)
     {
 
-        Log::error('Recieved Webhook', $request->all());
+        Log::info('Recieved Webhook', $request->all());
         // Verify Paystack signature
-        if (! $this->isValidPaystackSignature($request)) {
-            Log::warning('Invalid Paystack webhook signature');
+        if (!$this->isValidPaystackSignature($request)) {
+            Log::error('Invalid Paystack webhook signature');
             return response()->json(['message' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
         }
 

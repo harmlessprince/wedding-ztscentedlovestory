@@ -13,7 +13,7 @@ use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
 
 Route::post('/get-ticket', function (Request $request) {
 
-    \Illuminate\Support\Facades\Log::info($request->all());
+//    \Illuminate\Support\Facades\Log::info($request->all());
     $validated = $request->validate([
         'surname' => 'required|string',
         'first_name' => 'required|string',
@@ -28,12 +28,12 @@ Route::post('/get-ticket', function (Request $request) {
 
     $captcha = $validated['captcha'];
     $score = RecaptchaV3::verify($captcha, 'register');
-    if ($score < 0.5) {
-        return response()->json([
-            'success' => false,
-            'message' => 'You are most likely a bot, kindly refresh the page and try again.',
-        ]);
-    }
+//    if ($score < 0.5) {
+//        return response()->json([
+//            'success' => false,
+//            'message' => 'You are most likely a bot, kindly refresh the page and try again.',
+//        ]);
+//    }
     unset($validated['captcha']);
     $rsvp = Rsvp::query()->where('phone', $validated['phone'])->first();
     if ($rsvp) {
