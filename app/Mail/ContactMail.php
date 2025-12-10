@@ -77,7 +77,7 @@ class ContactMail extends Mailable
         $startDate = new \DateTime('2026-02-07 10:00:00', $nigeriaTimezone);
         $endDate = new \DateTime('2026-02-07 18:00:00', $nigeriaTimezone);
         $reminderAlertForSevenDays = new \DateTime('2026-02-01 10:00:00', $nigeriaTimezone);
-        $reminderAlertAdayBefore = new \DateTime('2026-02-06 10:00:00', $nigeriaTimezone);
+        $reminderAlertDayBefore = new \DateTime('2026-02-06 10:00:00', $nigeriaTimezone);
         $title = 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade';
         $description = sprintf("
         We are truly honored to have you confirm your presence at our Aqid and Walimatun Nikah .
@@ -102,7 +102,7 @@ class ContactMail extends Mailable
         $event = Event::create($title)
             ->organizer('realolamilekan@gmail.com', 'ZTscentedlovestory')
             ->alertAt($reminderAlertForSevenDays, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade is in one week time, we look forward to sharing this beautiful day with you.')
-            ->alertAt($reminderAlertAdayBefore, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade is in one week time, we look forward to sharing this beautiful day with you.')
+            ->alertAt($reminderAlertDayBefore, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade is in one week time, we look forward to sharing this beautiful day with you.')
             ->alertMinutesBefore(120, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade is going to start in 2 hours, drive and move safely')
             ->alertMinutesAfter(120, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade has ended, we hope you had a great time, thank you so much for celebrating our ZTscentedlovestory.')
             ->startsAt($startDate)
