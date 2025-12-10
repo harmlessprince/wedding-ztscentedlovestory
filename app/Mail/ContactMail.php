@@ -101,9 +101,9 @@ class ContactMail extends Mailable
         // 2. Create the Event object
         $event = Event::create($title)
             ->organizer('realolamilekan@gmail.com', 'ZTscentedlovestory')
-            ->alertAt($reminderAlertForSevenDays, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade is in one week time, we look forward to sharing this beautiful day with you.')
-            ->alertMinutesBefore(120, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade is going to start in 2 hours, drive and move safely')
-            ->alertMinutesAfter(120, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade has ended, we hope you had a great time, thank you so much for celebrating our ZTscentedlovestory.')
+//            ->alertAt($reminderAlertForSevenDays, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade is in one week time, we look forward to sharing this beautiful day with you.')
+//            ->alertMinutesBefore(120, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade is going to start in 2 hours, drive and move safely')
+//            ->alertMinutesAfter(120, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade has ended, we hope you had a great time, thank you so much for celebrating our ZTscentedlovestory.')
             ->startsAt($startDate)
             ->endsAt($endDate)
             ->description($description)
