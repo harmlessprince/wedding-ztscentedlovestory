@@ -76,6 +76,7 @@ class ContactMail extends Mailable
         // Convert data strings to DateTime objects (required by the package)
         $startDate = new \DateTime('2026-02-07 10:00:00', $nigeriaTimezone);
         $endDate = new \DateTime('2026-02-07 18:00:00', $nigeriaTimezone);
+        $reminderAlert = new \DateTime('2026-02-01 10:00:00', $nigeriaTimezone);
         $title = 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade';
         $description = sprintf("
         We are truly honored to have you confirm your presence at our Aqid and Walimatun Nikah .
@@ -98,13 +99,17 @@ class ContactMail extends Mailable
 
         // 2. Create the Event object
         $event = Event::create($title)
+            ->organizer('realolamilekan@gmail.com', 'ZTscentedlovestory')
+            ->alertAt($reminderAlert, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade is in one week time, we look forward to sharing this beautiful day with you.')
+            ->alertMinutesBefore(120, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade is going to start in 2 hours, drive and move safely')
+            ->alertMinutesAfter(120, 'Aqid and Walimatun Nikah of Taofeeq Olamilekan & Zuliat Ololade has ended, we hope you had a great time, thank you so much for celebrating our ZTscentedlovestory.')
             ->startsAt($startDate)
             ->endsAt($endDate)
             ->description($description)
             ->address($location);
 
         // 3. Create the Calendar object and add the event
-        $calendar = Calendar::create('Taofeeq Olamilekan & Zuliat Ololade') // Calendar Name/Organizer
+        $calendar = Calendar::create('ZTscentedlovestory') // Calendar Name/Organizer
         ->refreshInterval(5)
             ->event($event);
 
