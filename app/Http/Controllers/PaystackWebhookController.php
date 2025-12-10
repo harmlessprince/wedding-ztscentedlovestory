@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\WishlistService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class PaystackWebhookController extends Controller
 {
 
+
+   public function __construct(private WishlistService $wishlistService)
+   {
+   }
 
     public function handle(Request $request)
     {
