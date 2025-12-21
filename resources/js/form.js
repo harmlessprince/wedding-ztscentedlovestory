@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 email: document.getElementById('email').value,
                 side: guestTypeInput.value,
                 message: document.getElementById('message').value,
+                children_count: document.getElementById('children_count').value,
                 captcha: G_RECAPTCHA_VALUE
             };
 
