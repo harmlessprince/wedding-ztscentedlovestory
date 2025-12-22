@@ -25,7 +25,6 @@ Route::post('/get-ticket', function (Request $request) {
         'side' => 'required|string|in:GROOM,BRIDE',
     ]);
 
-
     $captcha = $validated['captcha'];
     $score = RecaptchaV3::verify($captcha, 'register');
 //    if ($score < 0.5) {
@@ -43,9 +42,19 @@ Route::post('/get-ticket', function (Request $request) {
         ]);
     }
 
+    $identityHashSource = strtolower($validated['first_name'] . '|' . $validated['surname'] . '|' . $validated['email']);
+    $identityHash = hash('sha256', $identityHashSource);
+
+    if (Rsvp::query()->where('identity_hash', $identityHash)->exists()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'A registration with this name and email already exists.',
+        ]);
+    }
+    $validated['identity_hash'] = $identityHash;
+
     $inviteCode = strtoupper(Str::random(4)) . "-" . random_int(1000, 9999);
-    // Generate hash from surname, first name, email, phone
-    $hashSource = $validated['surname'] . $validated['first_name'] . $validated['email'] . $validated['phone'];
+    $hashSource = strtolower($validated['first_name'] . '|' . $validated['surname'] . '|' . $validated['email'] . '|' . $validated['phone']);
     $hash = hash('sha256', $hashSource);
     $validated['hash'] = $hash;
     $validated['invite_code'] = $inviteCode;
