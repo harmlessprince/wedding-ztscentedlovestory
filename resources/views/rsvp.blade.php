@@ -29,8 +29,38 @@
 
     @include('partials.header')
 
+    <section id="closedSection" class="pt-28 pb-12 px-6">
+        <div class="max-w-md mx-auto bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-[#E5D9D9] text-center">
+            <div class="mb-6 inline-flex items-center justify-center w-16 h-16 bg-[#E5D9D9] rounded-full">
+                <i class="fa-solid fa-lock text-maroon text-2xl"></i>
+            </div>
 
-    <main id="formSection" class="pt-28 pb-12">
+            <h2 class="text-maroon text-3xl font-bold mb-4 font-sans">Invites Closed</h2>
+
+            <p class="text-gray-700 leading-relaxed mb-8">
+                Thank you for your interest! We have reached our maximum capacity and are no longer accepting new guest requests.
+            </p>
+
+            <div class="bg-maroon/10 p-4 rounded-lg">
+                <p class="text-maroon font-medium text-sm">
+                    If you have already received your ticket, please keep it ready for check-in at the venue.
+                </p>
+            </div>
+            <div>
+                <a href="{{route('order-of-event')}}" class="mt-8 inline-block text-maroon font-semibold hover:underline">
+                    See Order of Event
+                </a>
+            </div>
+            <div>
+                <a href="{{route('gift')}}" class="mt-8 inline-block text-maroon font-semibold hover:underline">
+                    Gift the couple
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <main id="formSection" class="pt-28 pb-12 hidden">
         <h1 class="text-maroon text-4xl font-bold text-center mb-8 font-sans">Get Invite</h1>
 
         <form id="ticketForm" class="space-y-4">
@@ -280,16 +310,6 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- Download Button -->
-{{--                <button--}}
-{{--                    id="downloadInviteBtn"--}}
-{{--                    class="w-full max-w-sm bg-[#C9B0B0]  text-maroon py-4 rounded-full text-base"--}}
-{{--                    style="font-family: Poppins, sans-serif;"--}}
-{{--                >--}}
-{{--                    Download Invite--}}
-{{--                </button>--}}
-
 
             </div>
 

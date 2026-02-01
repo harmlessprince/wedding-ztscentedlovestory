@@ -149,7 +149,7 @@
 
                     </div>
                     <p class="text-black text-sm">
-                        From Oshodi - Take a bus going to Igando, from igando, take a bus going to Iyanoba, drop at first gate, then take a bus going to Oko afo, drop at success plaza after Magbon bus stop, then cross to the other side.
+                        From Ikotun - Take a bus going to Igando, from Igando, take a bus going to Iyanoba, drop at first gate, then take a bus going to Oko afo, drop at success plaza after Magbon bus stop, then cross to the other side.
                     </p>
                 </div>
                 <div class="flex items-start gap-3 border-b pb-3 border-b-[#E5D9D9]">
